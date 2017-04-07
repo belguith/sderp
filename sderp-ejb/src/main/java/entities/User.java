@@ -1,20 +1,27 @@
 package entities;
 
 import java.io.Serializable;
-import javax.persistence.*;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 
 /**
  * The persistent class for the user database table.
  * 
  */
 @Entity
-@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
+@NamedQuery(name = "User.findAll", query = "SELECT u FROM User u")
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	private Byte active;
@@ -27,10 +34,25 @@ public class User implements Serializable {
 
 	private String password;
 
-	@Column(name="user_type")
+	@Column(name = "user_type")
 	private String userType;
 
+	// bi-directional many-to-one association to Employee
+	@ManyToOne
+	@JoinColumn(name = "emplyee_id")
+	private Employee employee;
+
 	public User() {
+	}
+
+	public User(Byte active, String image, String login, String name, String password, String userType) {
+		super();
+		this.active = active;
+		this.image = image;
+		this.login = login;
+		this.name = name;
+		this.password = password;
+		this.userType = userType;
 	}
 
 	public Integer getId() {
@@ -87,6 +109,14 @@ public class User implements Serializable {
 
 	public void setUserType(String userType) {
 		this.userType = userType;
+	}
+
+	public Employee getEmployee() {
+		return this.employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
 
 }
