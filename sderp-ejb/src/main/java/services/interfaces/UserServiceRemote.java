@@ -6,6 +6,6 @@ import entities.User;
 
 @Remote
 public interface UserServiceRemote extends IService<User> {
-	public User logIn(String userName, String password);
+	public User logIn(String userName);
 
 }

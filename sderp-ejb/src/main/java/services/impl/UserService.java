@@ -88,21 +88,18 @@ public class UserService implements UserServiceRemote, UserServiceLocal {
 	}
 
 	@Override
-	public User logIn(String userName, String password) {
+	public User logIn(String userName) {
 
-		
 		User user = null;
-		String jpql = "SELECT u FROM User u WHERE u.login = :param1 AND u.password = :param2";
+		String jpql = "SELECT u FROM User u WHERE u.login = :param1";
 		Query query = em.createQuery(jpql);
 		query.setParameter("param1", userName);
-		query.setParameter("param2", password);
 		try {
 			user = (User) query.getSingleResult();
 		} catch (Exception e) {
-			System.err.println("user not found");
+			System.err.println("User Not found");
 		}
+
 		return user;
 	}
-
 }
-

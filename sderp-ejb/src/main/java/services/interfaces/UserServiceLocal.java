@@ -6,6 +6,6 @@ import entities.User;
 
 @Local
 public interface UserServiceLocal extends IService<User> {
-	public User logIn(String userName,String password);
+	public User logIn(String userName);
 
 }
