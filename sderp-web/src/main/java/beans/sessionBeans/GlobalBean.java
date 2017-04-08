@@ -8,25 +8,36 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import entities.Employee;
+import entities.FicheDePaie;
 import entities.User;
+import services.interfaces.EmployeeServiceLocal;
+import services.interfaces.FicheDePaieServiceLocal;
 import services.interfaces.UserServiceLocal;
 
 @ManagedBean(name = "globalbean")
 @SessionScoped
 public class GlobalBean {
 
-	
-
 	@EJB
 	private UserServiceLocal userLocal;
+	@EJB
+	private EmployeeServiceLocal employeeLocal;
+	@EJB
+	private FicheDePaieServiceLocal ficheDePaieLocal;
 
-	
 	private List<User> listUser = new ArrayList<>();
 
-	
+	private List<Employee> listEmployee = new ArrayList<>();
+
+	private List<FicheDePaie> listFicheDePaie = new ArrayList<>();
+
 	private User selectedUser = new User();
 
-	
+	private Employee selectedEmployee = new Employee();
+
+	private Integer selectedEmployeeID = 0;
+
 	private Integer selectedUserID = 0;
 
 	public String test = "test string from global bean";
@@ -39,18 +50,15 @@ public class GlobalBean {
 	@PostConstruct
 	public void init() {
 
-		
 		this.listUser = userLocal.findWithNamedQuery("User.findAll");
-
+		this.listEmployee = employeeLocal.findWithNamedQuery("Employee.findAll");
+		this.listFicheDePaie = ficheDePaieLocal.findWithNamedQuery("FicheDePaie.findAll");
 	}
 
 	///////////////////////// Core Methods //////////////////////////////////
 
-	
-
 	////////////////////////// Navigation Actions////////////////////////////
 
-	
 	/***** Users ******/
 	public String goToDetailsUser() {
 		if (this.selectedUserID != 0) {
@@ -68,7 +76,7 @@ public class GlobalBean {
 		return "/pages/forms/user?faces-redirect=true";
 
 	}
-	
+
 	public String goToListUsers() {
 		this.listUser = userLocal.findWithNamedQuery("User.findAll");
 		this.selectedUser = new User();
@@ -76,9 +84,31 @@ public class GlobalBean {
 		return "/pages/lists/users?faces-redirect=true";
 	}
 
+	public String goToListEmployee() {
+		this.listEmployee = employeeLocal.findWithNamedQuery("Employee.findAll");
+		this.selectedUser = new User();
+		this.selectedUserID = 0;
+		return "/pages/lists/employees?faces-redirect=true";
+	}
+
+	public String goToDetailsEmployee() {
+		if (this.selectedEmployeeID != 0) {
+			this.selectedEmployee = employeeLocal.find(selectedEmployeeID);
+			return "/pages/details/employee?faces-redirect=true";
+		}
+		return "/pages/lists/employees?faces-redirect=true";
+	}
+
+	public String goToEditEmloyee() {
+		if (this.selectedEmployeeID != 0) {
+			this.selectedEmployee = employeeLocal.find(selectedEmployeeID);
+			return "/pages/forms/employee?faces-redirect=true";
+		}
+		return "/pages/forms/employee?faces-redirect=true";
+
+	}
 	////////////////////////////////////////////////////////////////////
 
-	
 	public List<User> getListUser() {
 		return listUser;
 	}
@@ -87,13 +117,25 @@ public class GlobalBean {
 		this.listUser = listUser;
 	}
 
-	
+	public List<Employee> getListEmployee() {
+		return listEmployee;
+	}
+
+	public List<FicheDePaie> getListFicheDePaie() {
+		return listFicheDePaie;
+	}
+
+	public void setListFicheDePaie(List<FicheDePaie> listFicheDePaie) {
+		this.listFicheDePaie = listFicheDePaie;
+	}
+
+	public void setListEmployee(List<Employee> listEmployee) {
+		this.listEmployee = listEmployee;
+	}
 
 	public Integer getSelectedUserID() {
 		return selectedUserID;
 	}
-
-	
 
 	public UserServiceLocal getUserLocal() {
 		return userLocal;
@@ -111,7 +153,6 @@ public class GlobalBean {
 		this.test = test;
 	}
 
-	
 	public User getSelectedUser() {
 		return selectedUser;
 	}
@@ -119,7 +160,5 @@ public class GlobalBean {
 	public void setSelectedUser(User selectedUser) {
 		this.selectedUser = selectedUser;
 	}
-
-	
 
 }
