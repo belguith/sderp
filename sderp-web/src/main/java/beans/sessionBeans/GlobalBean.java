@@ -161,4 +161,41 @@ public class GlobalBean {
 		this.selectedUser = selectedUser;
 	}
 
+	/**
+	 * @return the selectedEmployee
+	 */
+	public Employee getSelectedEmployee() {
+		return selectedEmployee;
+	}
+
+	/**
+	 * @param selectedEmployee the selectedEmployee to set
+	 */
+	public void setSelectedEmployee(Employee selectedEmployee) {
+		this.selectedEmployee = selectedEmployee;
+	}
+
+	/**
+	 * @return the selectedEmployeeID
+	 */
+	public Integer getSelectedEmployeeID() {
+		return selectedEmployeeID;
+	}
+
+	/**
+	 * @param selectedEmployeeID the selectedEmployeeID to set
+	 */
+	public void setSelectedEmployeeID(Integer selectedEmployeeID) {
+		this.selectedEmployeeID = selectedEmployeeID;
+	}
+
+	/**
+	 * @param selectedUserID the selectedUserID to set
+	 */
+	public void setSelectedUserID(Integer selectedUserID) {
+		this.selectedUserID = selectedUserID;
+	}
+	
+	
+
 }
