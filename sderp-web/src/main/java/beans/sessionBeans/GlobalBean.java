@@ -33,11 +33,11 @@ public class GlobalBean {
 	private List<FicheDePaie> listFicheDePaie = new ArrayList<>();
 
 	private User selectedUser = new User();
-
 	private Employee selectedEmployee = new Employee();
+	private FicheDePaie selectedFicheDePaie = new FicheDePaie();
 
 	private Integer selectedEmployeeID = 0;
-
+	private Integer selectedFicheID = 0;
 	private Integer selectedUserID = 0;
 
 	public String test = "test string from global bean";
@@ -84,6 +84,7 @@ public class GlobalBean {
 		return "/pages/lists/users?faces-redirect=true";
 	}
 
+	/***** Employee ******/
 	public String goToListEmployee() {
 		this.listEmployee = employeeLocal.findWithNamedQuery("Employee.findAll");
 		this.selectedUser = new User();
@@ -107,6 +108,33 @@ public class GlobalBean {
 		return "/pages/forms/employee?faces-redirect=true";
 
 	}
+	
+	
+	/***** Fiche de Paie ******/
+	public String goToListFicheDePaie() {
+		this.listFicheDePaie = ficheDePaieLocal.findWithNamedQuery("Employee.findAll");
+		this.selectedFicheDePaie = new FicheDePaie();
+		this.selectedFicheID = 0;
+		return "/pages/lists/fiche?faces-redirect=true";
+	}
+
+	public String goToDetailsFicheDePaie() {
+		if (this.selectedFicheID != 0) {
+			this.selectedFicheDePaie = ficheDePaieLocal.find(selectedFicheID);
+			return "/pages/details/fiche?faces-redirect=true";
+		}
+		return "/pages/lists/fiche?faces-redirect=true";
+	}
+
+	public String goToEditFicheDePaie() {
+		if (this.selectedFicheID != 0) {
+			this.selectedFicheDePaie = ficheDePaieLocal.find(selectedFicheID);
+			return "/pages/forms/fiche?faces-redirect=true";
+		}
+		return "/pages/forms/fiche?faces-redirect=true";
+
+	}
+	
 	////////////////////////////////////////////////////////////////////
 
 	public List<User> getListUser() {
@@ -195,6 +223,24 @@ public class GlobalBean {
 	public void setSelectedUserID(Integer selectedUserID) {
 		this.selectedUserID = selectedUserID;
 	}
+
+	public FicheDePaie getSelectedFicheDePaie() {
+		return selectedFicheDePaie;
+	}
+
+	public void setSelectedFicheDePaie(FicheDePaie selectedFicheDePaie) {
+		this.selectedFicheDePaie = selectedFicheDePaie;
+	}
+
+	public Integer getSelectedFicheID() {
+		return selectedFicheID;
+	}
+
+	public void setSelectedFicheID(Integer selectedFicheID) {
+		this.selectedFicheID = selectedFicheID;
+	}
+	
+	
 	
 	
 

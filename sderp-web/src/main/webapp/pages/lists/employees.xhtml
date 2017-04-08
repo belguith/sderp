@@ -15,6 +15,10 @@
 				<div class="row">
 					<div class="col-xs-12">
 						<!-- PAGE CONTENT BEGINS -->
+						
+						<h:commandLink action="#{globalbean.goToEditEmloyee()}" 
+							class="btn btn-primary">
+							<i class="ace-icon fa fa-plus bigger-160"></i>Add New</h:commandLink>
 						<p:dataList value="#{globalbean.listEmployee}" var="employee"
 							type="ordered">
 							<f:facet name="header">
