@@ -1,4 +1,4 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
++jque<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
@@ -36,39 +36,10 @@
 						class="menu-icon fa fa-tachometer"></i> <span class="menu-text">
 							Dashboard </span>
 				</a> <b class="arrow"></b></li>
-				<li class=""><a href="#" class="dropdown-toggle"> <i
-						class="menu-icon fa fa-university"></i> <span class="menu-text">
-							Companies </span> <b class="arrow fa fa-angle-down"></b>
-				</a> <b class="arrow"></b>
-					<ul class="submenu">
-						<li class=""><h:commandLink class="dropdown-toggle"
-								action="#{globalbean.goToListsCustomers()}"
-								value="All Companies">
-								<i class="menu-icon fa fa-caret-right"> </i>
-							</h:commandLink> <b class="arrow"></b></li>
-						<li class=""><h:commandLink class="dropdown-toggle"
-								action="#{globalbean.goToListsSupplier()}" value="All Suppliers">
-								<i class="menu-icon fa fa-caret-right"> </i>
-							</h:commandLink> <b class="arrow"></b></li>
-					</ul></li>
+
+
 				<li class=""><h:commandLink
-						action="#{globalbean.goToListProject()}" value="">
-						<i class="menu-icon fa fa-list-alt"></i>
-						<span class="menu-text"> All Projects </span>
-					</h:commandLink> <b class="arrow"></b></li>
-				<li class=""><h:commandLink
-						action="#{globalbean.goToListProduct()}" value="">
-						<i class="menu-icon fa fa-cog"></i>
-						<span class="menu-text"> All Products </span>
-					</h:commandLink> <b class="arrow"></b></li>
-				<li class=""><h:commandLink action="#{globalbean.goToListPo()}"
-						value="">
-						<i class="menu-icon fa fa-shopping-cart"></i>
-						<span class="menu-text">All Purchase Orders</span>
-					</h:commandLink> <b class="arrow"></b></li>
-					
-				<li class=""><h:commandLink action="#{globalbean.goToListUsers()}"
-						value="">
+						action="#{globalbean.goToListUsers()}" value="">
 						<i class="menu-icon fa fa-users"></i>
 						<span class="menu-text">All Users</span>
 					</h:commandLink> <b class="arrow"></b></li>

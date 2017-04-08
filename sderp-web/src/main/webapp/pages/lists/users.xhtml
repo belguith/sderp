@@ -5,6 +5,7 @@
 	xmlns:jsf="http://xmlns.jcp.org/jsf"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/template/template.xhtml">
 	<ui:define name="content">
 
@@ -14,7 +15,13 @@
 				<div class="row">
 					<div class="col-xs-12">
 						<!-- PAGE CONTENT BEGINS -->
-						new file
+						<p:dataList value="#{globalbean.listUser}" var="user"
+							type="ordered">
+							<f:facet name="header">
+            				Users
+        					</f:facet>
+        					#{user.name}, #{user.login} 
+    					</p:dataList>
 						<!-- PAGE CONTENT ENDS -->
 					</div>
 					<!-- /.col -->
