@@ -1,4 +1,4 @@
-package sessionBeans;
+package beans.sessionBeans;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
