@@ -49,6 +49,7 @@
 <h:body class="no-skin">
 	<!-- include nav bar here -->
 	<ui:include src="/WEB-INF/template/client-nav.xhtml" />
+
 	<div class="main-container ace-save-state" id="main-container">
 		<script type="text/javascript">
 				try{ace.settings.loadState('main-container')}catch(e){}
@@ -57,17 +58,22 @@
 		<ui:insert name="content">
 					Content Goes Here
 		</ui:insert>
+
+
 		<ui:include src="/WEB-INF/template/footer.xhtml" />
 		<a href="#" id="btn-scroll-up"
 			class="btn-scroll-up btn btn-sm btn-inverse"> <i
 			class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 		</a>
 	</div>
-	<!-- include footer here  -->
-	<!-- basic scripts -->
-	<!--[if !IE]> -->
-	<script
+
+
+	<ui:insert name="jquery">
+		<script
 		src="#{request.contextPath}/resources/assets/js/jquery-2.1.4.min.js"></script>
+	</ui:insert>
+
+	
 	<!-- <![endif]-->
 	<!--[if IE]>
 <script src="assets/js/jquery-1.11.3.min.js"></script>
