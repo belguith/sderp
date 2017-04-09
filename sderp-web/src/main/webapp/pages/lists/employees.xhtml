@@ -5,30 +5,221 @@
 	xmlns:jsf="http://xmlns.jcp.org/jsf"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/template/template.xhtml">
 	<ui:define name="content">
 
 
 		<div class="page-content">
+
 			<h:form>
 				<div class="row">
 					<div class="col-xs-12">
-						<!-- PAGE CONTENT BEGINS -->
-						
-						<h:commandLink action="#{globalbean.goToEditEmloyee()}" 
-							class="btn btn-primary">
-							<i class="ace-icon fa fa-plus bigger-160"></i>Add New</h:commandLink>
-						<p:dataList value="#{globalbean.listEmployee}" var="employee"
-							type="ordered">
-							<f:facet name="header">
-            				Employees
-        					</f:facet>
-        					#{employee.lastName}, #{employee.firstName} 
-    					</p:dataList>
-						<!-- PAGE CONTENT ENDS -->
+						<h3 class="header smaller lighter blue">Liste des Employees</h3>
+
+						<div class="clearfix">
+							<div class="pull-right tableTools-container">
+								<h:commandLink class="btn btn-primary"
+									action="#{globalbean.goToEditEmloyee()}" value="">
+									<i class="ace-icon fa fa-plus bigger-160"></i> Nouveau
+									</h:commandLink>
+							</div>
+						</div>
+
+
+
+						<table id="simple-table" class="table  table-bordered table-hover">
+							<thead>
+								<tr>
+
+									<th class="center"><label class="pos-rel"> <input
+											type="checkbox" class="ace" /> <span class="lbl"></span>
+									</label></th>
+
+									<th class="detail-col">Details</th>
+
+									<th><i class="ace-icon fa fa-user bigger-110 hidden-480"></i>Nom</th>
+
+									<th><i class="fa fa-anchor bigger-110 hidden-480"></i>
+										Depatement</th>
+
+									<th class="hidden-480"><i
+										class="ace-icon fa fa-flag bigger-110 hidden-480"></i>Poste</th>
+
+									<th><i class="ace-icon fa fa-user bigger-110 hidden-480"></i>
+										Manager</th>
+
+									<th><i class="ace-icon fa fa-tag bigger-110 hidden-480"></i>
+										Type</th>
+
+									<th><i
+										class="ace-icon fa fa-sign-in bigger-110 hidden-480"></i>
+										Login</th>
+
+									<th></th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<ui:repeat var="u" value="#{globalbean.listUser}">
+									<tr>
+										<td class="center"><label class="pos-rel"> <input
+												type="checkbox" class="ace" /> <span class="lbl"></span>
+										</label></td>
+
+										<td class="center">
+											<div class="action-buttons">
+												<a href="#" class="green bigger-140 show-details-btn"
+													title="Show Details"> <i
+													class="ace-icon fa fa-angle-double-down"></i> <span
+													class="sr-only">Details</span>
+												</a>
+											</div>
+										</td>
+
+										<td><h:outputText
+												value="#{u.employee.firstName} #{u.employee.lastName}" /></td>
+										<td><h:outputText value="#{u.employee.departement}" /></td>
+										<td><h:outputText value="#{u.employee.jobTitle}" /></td>
+
+
+
+										<td><span class="label label-sm label-success"> <h:outputText
+													value="#{u.employee.employee.firstName} #{u.employee.employee.lastName}"
+													rendered="#{u.employee.employee!=null}" /></span></td>
+
+										<td><h:outputText value="#{u.userType}" /></td>
+
+										<td><h:outputText value="#{u.login}" /></td>
+
+										<td>
+											<div class="hidden-sm hidden-xs btn-group">
+												<h:commandLink class="btn btn-xs btn-info "
+													action="#{globalbean.goToDetailsEmployee()}" value="">
+													<i class="ace-icon fa fa-search-plus bigger-130"></i>
+													<f:setPropertyActionListener
+														target="#{globalbean.selectedUserID}" value="#{u.id}" />
+												</h:commandLink>
+
+												<h:commandLink class="btn btn-xs btn-warning"
+													action="#{globalbean.goToEditEmloyee()}" value="">
+													<i class="ace-icon fa fa-pencil bigger-120"></i>
+													<f:setPropertyActionListener
+														target="#{globalbean.selectedUserID}" value="#{u.id}" />
+												</h:commandLink>
+
+												<h:commandLink class="btn btn-xs btn-danger"
+													action="#{deletebean.doDeleteCustomer(u.id)}" value="">
+													<i class="ace-icon fa fa-trash-o bigger-120"></i>
+
+												</h:commandLink>
+
+
+											</div>
+
+										</td>
+									</tr>
+
+									<tr class="detail-row">
+										<td colspan="8">
+											<div class="table-detail">
+												<div class="row">
+													<div class="col-xs-12 col-sm-2">
+														<div class="text-center">
+															<img height="150" width="200"
+																class="thumbnail inline no-margin-bottom"
+																alt="Domain Owner's Avatar"
+																src="../../resources/assets/images/avatars/avatar.png" />
+															<br />
+															<div
+																class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
+																<div class="inline position-relative">
+																	<a class="user-title-label" href="#"> <i
+																		class="ace-icon fa fa-circle light-green"></i> <span
+																		class="white">#{u.employee.firstName}
+																			#{u.employee.lastName}</span>
+																	</a>
+																</div>
+															</div>
+														</div>
+													</div>
+
+													<div class="col-xs-12 col-sm-6">
+														<div class="space visible-xs"></div>
+
+														<div class="profile-user-info profile-user-info-striped">
+															<div class="profile-info-row">
+																<div class="profile-info-name">CIN</div>
+
+																<div class="profile-info-value">
+																	<span>#{u.employee.numCin}</span>
+																</div>
+															</div>
+
+															<div class="profile-info-row">
+																<div class="profile-info-name">CNSS</div>
+
+																<div class="profile-info-value">
+																	<i class="fa fa-map-marker light-orange bigger-110"></i>
+																	<span>#{u.employee.numCnss}</span>
+																</div>
+															</div>
+
+															<div class="profile-info-row">
+																<div class="profile-info-name">Categorie</div>
+
+																<div class="profile-info-value">
+																	<span>#{u.employee.category}</span>
+																</div>
+															</div>
+
+															<div class="profile-info-row">
+																<div class="profile-info-name">Echelon</div>
+
+																<div class="profile-info-value">
+																	<span>#{u.employee.echelon}</span>
+																</div>
+															</div>
+
+															<div class="profile-info-row">
+																<div class="profile-info-name">Famille</div>
+
+																<div class="profile-info-value">
+
+																	<span> <h:outputText value="Oui"
+																			rendered="#{u.employee.family==1}" /> <h:outputText
+																			value="Non" rendered="#{u.employee.family==0}" />
+																	</span>
+
+
+																</div>
+															</div>
+
+
+
+														</div>
+													</div>
+
+													<div class="col-xs-12 col-sm-4">
+
+
+
+														<div>
+															<label for="form-field-select-2">Purchase Orders</label>
+
+														</div>
+
+
+													</div>
+
+												</div>
+											</div>
+										</td>
+									</tr>
+								</ui:repeat>
+							</tbody>
+						</table>
+
 					</div>
-					<!-- /.col -->
 				</div>
 			</h:form>
 			<!-- /.row -->
@@ -36,4 +227,100 @@
 		<!-- /.page-content -->
 
 	</ui:define>
+
+	<ui:define name="jquery">
+		<script
+			src="#{request.contextPath}/resources/assets/js/jquery-2.1.4.min.js"></script>
+	</ui:define>
+
+	<ui:define name="scripts">
+
+		<script
+			src="#{request.contextPath}/resources/assets/js/jquery-2.1.4.min.js"></script>
+		<script
+			src="#{request.contextPath}/resources/assets/js/bootstrap.min.js"></script>
+
+		<!-- page specific plugin scripts -->
+		<script
+			src="#{request.contextPath}/resources/assets/js/jquery-ui.custom.min.js"></script>
+		<script
+			src="#{request.contextPath}/resources/assets/js/jquery.dataTables.min.js"></script>
+		<script
+			src="#{request.contextPath}/resources/assets/js/jquery.dataTables.bootstrap.min.js"></script>
+		<script
+			src="#{request.contextPath}/resources/assets/js/dataTables.buttons.min.js"></script>
+		<script
+			src="#{request.contextPath}/resources/assets/js/buttons.flash.min.js"></script>
+		<script
+			src="#{request.contextPath}/resources/assets/js/buttons.html5.min.js"></script>
+		<script
+			src="#{request.contextPath}/resources/assets/js/buttons.print.min.js"></script>
+		<script
+			src="#{request.contextPath}/resources/assets/js/buttons.colVis.min.js"></script>
+		<script
+			src="#{request.contextPath}/resources/assets/js/dataTables.select.min.js"></script>
+
+		<script
+			src="#{request.contextPath}/resources/assets/js/jquery.inputlimiter.min.js"></script>
+		<script
+			src="#{request.contextPath}/resources/assets/js/jquery.maskedinput.min.js"></script>
+		<script
+			src="#{request.contextPath}/resources/assets/js/bootstrap-tag.min.js"></script>
+
+		<!-- ace scripts -->
+		<script
+			src="#{request.contextPath}/resources/assets/js/ace-elements.min.js"></script>
+		<script src="#{request.contextPath}/resources/assets/js/ace.min.js"></script>
+
+		<script type="text/javascript">
+			jQuery(function($) {
+			
+				//And for the first simple table, which doesn't have TableTools or dataTables
+				//select/deselect all rows according to table header checkbox
+				var active_class = 'active';
+				$('#simple-table > thead > tr > th input[type=checkbox]').eq(0).on('click', function(){
+					var th_checked = this.checked;//checkbox inside "TH" table header
+					
+					$(this).closest('table').find('tbody > tr').each(function(){
+						var row = this;
+						if(th_checked) $(row).addClass(active_class).find('input[type=checkbox]').eq(0).prop('checked', true);
+						else $(row).removeClass(active_class).find('input[type=checkbox]').eq(0).prop('checked', false);
+					});
+				});
+				
+				//select/deselect a row when the checkbox is checked/unchecked
+				$('#simple-table').on('click', 'td input[type=checkbox]' , function(){
+					var $row = $(this).closest('tr');
+					if($row.is('.detail-row ')) return;
+					if(this.checked) $row.addClass(active_class);
+					else $row.removeClass(active_class);
+				});
+			
+				
+			
+				
+				
+				
+				
+				
+				/***************/
+				$('.show-details-btn').on('click', function(e) {
+					e.preventDefault();
+					$(this).closest('tr').next().toggleClass('open');
+					$(this).find(ace.vars['.icon']).toggleClass('fa-angle-double-down').toggleClass('fa-angle-double-up');
+				});
+				/***************/
+				
+				
+				
+				
+	
+			
+			
+			})
+		</script>
+
+
+	</ui:define>
+
 </ui:composition>

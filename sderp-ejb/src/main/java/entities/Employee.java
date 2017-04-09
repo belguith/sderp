@@ -2,65 +2,70 @@ package entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.List;
 
+import enums.Dempartement;
+import enums.JobTitle;
+
+import java.util.List;
 
 /**
  * The persistent class for the employee database table.
  * 
  */
 @Entity
-@NamedQuery(name="Employee.findAll", query="SELECT e FROM Employee e")
+@NamedQuery(name = "Employee.findAll", query = "SELECT e FROM Employee e")
 public class Employee implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	private Integer category;
 
 	private Integer children;
 
-	private String departement;
+	@Enumerated(EnumType.STRING)
+	private Dempartement departement;
 
 	private Integer echelon;
 
-	@Column(name="element_variable")
+	@Column(name = "element_variable")
 	private String elementVariable;
 
 	private Byte family;
 
-	@Column(name="first_name")
+	@Column(name = "first_name")
 	private String firstName;
 
-	@Column(name="job_title")
-	private String jobTitle;
+	@Column(name = "job_title")
+	@Enumerated(EnumType.STRING)
+	private JobTitle jobTitle;
 
-	@Column(name="last_name")
+	@Column(name = "last_name")
 	private String lastName;
 
-	@Column(name="num_cin")
+	@Column(name = "num_cin")
 	private Integer numCin;
 
-	@Column(name="num_cnss")
+	@Column(name = "num_cnss")
 	private String numCnss;
 
-	//bi-directional many-to-one association to Employee
+	// bi-directional many-to-one association to Employee
 	@ManyToOne
-	@JoinColumn(name="manager_id")
+	@JoinColumn(name = "manager_id")
 	private Employee employee;
 
-	//bi-directional many-to-one association to Employee
-	@OneToMany(mappedBy="employee", fetch=FetchType.EAGER)
+	// bi-directional many-to-one association to Employee
+	@OneToMany(mappedBy = "employee", fetch = FetchType.EAGER)
 	private List<Employee> employees;
 
-	//bi-directional many-to-one association to FicheDePaie
-	@OneToMany(mappedBy="employee", fetch=FetchType.EAGER)
+	// bi-directional many-to-one association to FicheDePaie
+	@OneToMany(mappedBy = "employee", fetch = FetchType.EAGER)
 	private List<FicheDePaie> ficheDePaies;
 
-	//bi-directional many-to-one association to User
-	@OneToOne(mappedBy="employee", fetch=FetchType.EAGER)
+	// bi-directional many-to-one association to User
+	@OneToOne(mappedBy = "employee", fetch = FetchType.EAGER)
 	private User user;
 
 	public Employee() {
@@ -90,11 +95,11 @@ public class Employee implements Serializable {
 		this.children = children;
 	}
 
-	public String getDepartement() {
+	public Dempartement getDepartement() {
 		return this.departement;
 	}
 
-	public void setDepartement(String departement) {
+	public void setDepartement(Dempartement departement) {
 		this.departement = departement;
 	}
 
@@ -130,11 +135,11 @@ public class Employee implements Serializable {
 		this.firstName = firstName;
 	}
 
-	public String getJobTitle() {
+	public JobTitle getJobTitle() {
 		return this.jobTitle;
 	}
 
-	public void setJobTitle(String jobTitle) {
+	public void setJobTitle(JobTitle jobTitle) {
 		this.jobTitle = jobTitle;
 	}
 
@@ -221,9 +226,5 @@ public class Employee implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
-
-	
-
-	
 
 }

@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
+import enums.UserType;
+
 /**
  * The persistent class for the user database table.
  * 
@@ -19,7 +23,7 @@ import javax.persistence.OneToOne;
 @Entity
 @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u")
 public class User implements Serializable {
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1235649879874L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,17 +40,18 @@ public class User implements Serializable {
 	private String password;
 
 	@Column(name = "user_type")
-	private String userType;
+	@Enumerated(EnumType.STRING)
+	private UserType userType;
 
 	// bi-directional many-to-one association to Employee
-	@OneToOne(fetch =FetchType.EAGER)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "emplyee_id")
 	private Employee employee;
 
 	public User() {
 	}
 
-	public User(Byte active, String image, String login, String name, String password, String userType) {
+	public User(Byte active, String image, String login, String name, String password, UserType userType) {
 		super();
 		this.active = active;
 		this.image = image;
@@ -104,11 +109,11 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public String getUserType() {
+	public UserType getUserType() {
 		return this.userType;
 	}
 
-	public void setUserType(String userType) {
+	public void setUserType(UserType userType) {
 		this.userType = userType;
 	}
 

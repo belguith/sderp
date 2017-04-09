@@ -32,24 +32,21 @@
 			</div>
 			<!-- /.sidebar-shortcuts -->
 			<ul class="nav nav-list">
-				<li class="active"><a href="index.html"> <i
-						class="menu-icon fa fa-tachometer"></i> <span class="menu-text">
-							Dashboard </span>
-				</a> <b class="arrow"></b></li>
+				<li class="active"><h:commandLink
+						action="#{globalbean.goToDashboard()}" value="">
+						<i class="menu-icon fa fa-tachometer"></i>
+						<span class="menu-text">Dashboard</span>
+					</h:commandLink> </li>
 
 
 				<li class=""><h:commandLink
-						action="#{globalbean.goToListUsers()}" value="">
+						action="#{globalbean.goToListEmployee()}" value="">
 						<i class="menu-icon fa fa-users"></i>
 						<span class="menu-text">All Users</span>
 					</h:commandLink> <b class="arrow"></b></li>
-				
-				<li class=""><h:commandLink
-						action="#{globalbean.goToDetailsEmployee()}" value="">
-						<i class="menu-icon fa fa-users"></i>
-						<span class="menu-text">All Employees</span>
-					</h:commandLink> <b class="arrow"></b></li>
-					
+
+
+
 			</ul>
 			<!-- /.nav-list -->
 			<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">

@@ -1,0 +1,161 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	template="/WEB-INF/template/template.xhtml">
+	<ui:define name="content">
+
+
+		<div class="page-content">
+
+			<div class="row">
+				<div class="col-xs-12">
+					<!-- PAGE CONTENT BEGINS -->
+					<h3 class="header smaller lighter blue">Ajouter un nouvel
+						employee</h3>
+					<h:form class="form-horizontal" role="form">
+
+						<div class="form-group has-error col-md-6">
+
+							<h:outputLabel for="firstName" class="col-sm-2 control-label"
+								value="First Name :" />
+							<div class="col-sm-6">
+								<span class="block input-icon input-icon-right"> <h:inputText
+										id="firstName" class="col-xs-12 col-sm-12" immediate="true"
+										requiredMessage="This field is required" required="true"
+										value="#{profilebean.selectedUser.employee.firstName}" />
+								</span> &#160; &#160; &#160;
+								<div class="help-block col-sm-2 col-sm-reset inline">
+									<h:message for="firstName" />
+								</div>
+							</div>
+
+						</div>
+
+
+
+						<div class="form-group has-error col-md-6">
+							<h:outputLabel for="numCin" class="col-sm-2 control-label"
+								value="Num Cin :" />
+							<div class="col-sm-6">
+								<span class="block input-icon input-icon-right"> <h:inputText
+										id="numCin" class="col-xs-12 col-sm-12" immediate="true"
+										requiredMessage="This field is required" required="true"
+										value="#{profilebean.selectedUser.employee.numCin}" />
+								</span> &#160; &#160; &#160;
+								<div class="help-block col-sm-2 col-sm-reset inline">
+									<h:message for="numCin" />
+								</div>
+							</div>
+
+						</div>
+
+						<div class="form-group has-error col-md-6">
+
+							<h:outputLabel for="lastName" class="col-sm-2 control-label"
+								value="Last Name :" />
+							<div class="col-sm-6">
+								<span class="block input-icon input-icon-right"> <h:inputText
+										id="lastName" class="col-xs-12 col-sm-12" immediate="true"
+										requiredMessage="This field is required" required="true"
+										value="#{profilebean.selectedUser.employee.lastName}" />
+								</span> &#160; &#160; &#160;
+								<div class="help-block col-sm-2 col-sm-reset inline">
+									<h:message for="lastName" />
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group has-error col-md-6">
+
+							<h:outputLabel for="numCnss" class="col-sm-2 control-label"
+								value="Num Cnss :" />
+							<div class="col-sm-6">
+								<span class="block input-icon input-icon-right"> <h:inputText
+										id="numCnss" class="col-xs-12 col-sm-12" immediate="true"
+										requiredMessage="This field is required" required="true"
+										value="#{profilebean.selectedUser.employee.numCnss}" />
+								</span> &#160; &#160; &#160;
+								<div class="help-block col-sm-2 col-sm-reset inline">
+									<h:message for="numCnss" />
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group has-error col-md-6">
+
+							<h:outputLabel for="Departement" class="col-sm-2 control-label"
+								value="Departement :" />
+							<div class="col-sm-6">
+								<span class="block input-icon input-icon-right"> <h:selectOneMenu
+										value="#{profilebean.selectedUser.employee.departement}"
+										class="col-xs-10 col-sm-12" id="Departement" immediate="true">
+										<f:selectItems value="#{profilebean.departements}" var="d"
+											itemLabel="#{d.toString()}" itemValue="#{d.name()}" />
+									</h:selectOneMenu>
+								</span> &#160; &#160; &#160;
+								<div class="help-block col-sm-2 col-sm-reset inline">
+									<h:message for="Departement" />
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group has-error col-md-6">
+
+							<h:outputLabel for="jobTitle" class="col-sm-2 control-label"
+								value="Fonction :" />
+							<div class="col-sm-6">
+								<span class="block input-icon input-icon-right"> <h:selectOneMenu
+										value="#{profilebean.selectedUser.employee.departement}"
+										class="col-xs-10 col-sm-12" id="jobTitle" immediate="true">
+										<f:selectItems value="#{profilebean.jobTitles}" var="j"
+											itemLabel="#{j.toString()}" itemValue="#{j.name()}" />
+									</h:selectOneMenu>
+
+								</span> &#160; &#160; &#160;
+								<div class="help-block col-sm-2 col-sm-reset inline">
+									<h:message for="jobTitle" />
+								</div>
+							</div>
+						</div>
+
+
+
+
+
+
+
+						<div class="clearfix form-actions">
+							<div class="col-md-offset-3 col-md-9">
+
+								<h:commandLink class="btn btn-info"
+									action="#{profilebean.doAddOrUpdate()}" value="Submit">
+									<i class="ace-icon fa fa-check bigger-110"></i>
+								</h:commandLink>
+
+								&#160; &#160; &#160;
+
+
+								<h:commandLink class="btn" action="#{userbean.doResetForm()}"
+									value="Reset">
+									<i class="ace-icon fa fa-undo bigger-110"></i>
+								</h:commandLink>
+							</div>
+						</div>
+
+					</h:form>
+
+					<!-- PAGE CONTENT ENDS -->
+				</div>
+				<!-- /.col -->
+			</div>
+
+			<!-- /.row -->
+		</div>
+		<!-- /.page-content -->
+
+	</ui:define>
+</ui:composition>

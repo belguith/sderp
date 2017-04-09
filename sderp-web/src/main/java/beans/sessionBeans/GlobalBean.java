@@ -7,8 +7,9 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
-import entities.Employee;
 import entities.FicheDePaie;
 import entities.User;
 import services.interfaces.EmployeeServiceLocal;
@@ -28,18 +29,15 @@ public class GlobalBean {
 
 	private List<User> listUser = new ArrayList<>();
 
-	private List<Employee> listEmployee = new ArrayList<>();
-
 	private List<FicheDePaie> listFicheDePaie = new ArrayList<>();
 
 	private User selectedUser = new User();
-	private Employee selectedEmployee = new Employee();
 	private FicheDePaie selectedFicheDePaie = new FicheDePaie();
 
-	private Integer selectedEmployeeID = 0;
 	private Integer selectedFicheID = 0;
 	private Integer selectedUserID = 0;
 
+	private List<String> breadcrumb = new ArrayList<>();
 	public String test = "test string from global bean";
 
 	public GlobalBean() {
@@ -51,7 +49,6 @@ public class GlobalBean {
 	public void init() {
 
 		this.listUser = userLocal.findWithNamedQuery("User.findAll");
-		this.listEmployee = employeeLocal.findWithNamedQuery("Employee.findAll");
 		this.listFicheDePaie = ficheDePaieLocal.findWithNamedQuery("FicheDePaie.findAll");
 	}
 
@@ -59,57 +56,41 @@ public class GlobalBean {
 
 	////////////////////////// Navigation Actions////////////////////////////
 
-	/***** Users ******/
-	public String goToDetailsUser() {
-		if (this.selectedUserID != 0) {
-			this.selectedUser = userLocal.find(selectedUserID);
-			return "/pages/details/user?faces-redirect=true";
-		}
-		return "/pages/lists/users?faces-redirect=true";
-	}
-
-	public String goToEditUser() {
-		if (this.selectedUserID != 0) {
-			this.selectedUser = userLocal.find(selectedUserID);
-			return "/pages/forms/user?faces-redirect=true";
-		}
-		return "/pages/forms/user?faces-redirect=true";
-
-	}
-
-	public String goToListUsers() {
+	/***** Employee ******/
+	public String goToListEmployee() {
 		this.listUser = userLocal.findWithNamedQuery("User.findAll");
 		this.selectedUser = new User();
 		this.selectedUserID = 0;
-		return "/pages/lists/users?faces-redirect=true";
-	}
-
-	/***** Employee ******/
-	public String goToListEmployee() {
-		this.listEmployee = employeeLocal.findWithNamedQuery("Employee.findAll");
-		this.selectedUser = new User();
-		this.selectedUserID = 0;
+		this.breadcrumb.add(0, "List");
+		this.breadcrumb.add(1, "Employee");
 		return "/pages/lists/employees?faces-redirect=true";
 	}
 
 	public String goToDetailsEmployee() {
-		if (this.selectedEmployeeID != 0) {
-			this.selectedEmployee = employeeLocal.find(selectedEmployeeID);
+		if (this.selectedUserID != 0) {
+			this.selectedUser = userLocal.find(selectedUserID);
+			this.breadcrumb.add(0, "Profile");
+			this.breadcrumb.add(1, "Employee");
 			return "/pages/details/employee?faces-redirect=true";
 		}
+		this.breadcrumb.add(0, "List");
+		this.breadcrumb.add(1, "Employee");
 		return "/pages/lists/employees?faces-redirect=true";
 	}
 
 	public String goToEditEmloyee() {
-		if (this.selectedEmployeeID != 0) {
-			this.selectedEmployee = employeeLocal.find(selectedEmployeeID);
+		if (this.selectedUserID != 0) {
+			this.selectedUser = userLocal.find(selectedUserID);
+			this.breadcrumb.add(0, "Form");
+			this.breadcrumb.add(1, "Employee");
 			return "/pages/forms/employee?faces-redirect=true";
 		}
+		this.breadcrumb.add(0, "Form");
+		this.breadcrumb.add(1, "Employee");
 		return "/pages/forms/employee?faces-redirect=true";
 
 	}
-	
-	
+
 	/***** Fiche de Paie ******/
 	public String goToListFicheDePaie() {
 		this.listFicheDePaie = ficheDePaieLocal.findWithNamedQuery("Employee.findAll");
@@ -134,7 +115,12 @@ public class GlobalBean {
 		return "/pages/forms/fiche?faces-redirect=true";
 
 	}
-	
+
+	public String goToDashboard() {
+		this.breadcrumb = new ArrayList<>();
+		return "/index?faces-redirect=true";
+	}
+
 	////////////////////////////////////////////////////////////////////
 
 	public List<User> getListUser() {
@@ -145,20 +131,12 @@ public class GlobalBean {
 		this.listUser = listUser;
 	}
 
-	public List<Employee> getListEmployee() {
-		return listEmployee;
-	}
-
 	public List<FicheDePaie> getListFicheDePaie() {
 		return listFicheDePaie;
 	}
 
 	public void setListFicheDePaie(List<FicheDePaie> listFicheDePaie) {
 		this.listFicheDePaie = listFicheDePaie;
-	}
-
-	public void setListEmployee(List<Employee> listEmployee) {
-		this.listEmployee = listEmployee;
 	}
 
 	public Integer getSelectedUserID() {
@@ -190,35 +168,8 @@ public class GlobalBean {
 	}
 
 	/**
-	 * @return the selectedEmployee
-	 */
-	public Employee getSelectedEmployee() {
-		return selectedEmployee;
-	}
-
-	/**
-	 * @param selectedEmployee the selectedEmployee to set
-	 */
-	public void setSelectedEmployee(Employee selectedEmployee) {
-		this.selectedEmployee = selectedEmployee;
-	}
-
-	/**
-	 * @return the selectedEmployeeID
-	 */
-	public Integer getSelectedEmployeeID() {
-		return selectedEmployeeID;
-	}
-
-	/**
-	 * @param selectedEmployeeID the selectedEmployeeID to set
-	 */
-	public void setSelectedEmployeeID(Integer selectedEmployeeID) {
-		this.selectedEmployeeID = selectedEmployeeID;
-	}
-
-	/**
-	 * @param selectedUserID the selectedUserID to set
+	 * @param selectedUserID
+	 *            the selectedUserID to set
 	 */
 	public void setSelectedUserID(Integer selectedUserID) {
 		this.selectedUserID = selectedUserID;
@@ -239,9 +190,13 @@ public class GlobalBean {
 	public void setSelectedFicheID(Integer selectedFicheID) {
 		this.selectedFicheID = selectedFicheID;
 	}
-	
-	
-	
-	
+
+	public List<String> getBreadcrumb() {
+		return breadcrumb;
+	}
+
+	public void setBreadcrumb(List<String> breadcrumb) {
+		this.breadcrumb = breadcrumb;
+	}
 
 }

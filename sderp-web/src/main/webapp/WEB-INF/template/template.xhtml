@@ -63,7 +63,8 @@
 						<li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">Home</a>
 						</li>
 
-						<li class="active"><a href="#">#{request.requestURI}</a></li>
+						<li class="active"><a href="#"> <h:outputText value="#{globalbean.breadcrumb.get(0)}" rendered="#{globalbean.breadcrumb.size()>0}" /></a> </li>
+						<li class="active"><a href="#"> <h:outputText value="#{globalbean.breadcrumb.get(1)}" rendered="#{globalbean.breadcrumb.size()>1}" /> </a></li>
 					</ul>
 					<!-- /.breadcrumb -->
 					<div class="nav-search" id="nav-search">
