@@ -4,12 +4,13 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 
 /**
  * The persistent class for the user database table.
@@ -38,7 +39,7 @@ public class User implements Serializable {
 	private String userType;
 
 	// bi-directional many-to-one association to Employee
-	@ManyToOne
+	@OneToOne(fetch =FetchType.EAGER)
 	@JoinColumn(name = "emplyee_id")
 	private Employee employee;
 

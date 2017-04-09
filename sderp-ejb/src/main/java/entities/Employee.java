@@ -60,8 +60,8 @@ public class Employee implements Serializable {
 	private List<FicheDePaie> ficheDePaies;
 
 	//bi-directional many-to-one association to User
-	@OneToMany(mappedBy="employee", fetch=FetchType.EAGER)
-	private List<User> users;
+	@OneToOne(mappedBy="employee", fetch=FetchType.EAGER)
+	private User user;
 
 	public Employee() {
 	}
@@ -214,26 +214,16 @@ public class Employee implements Serializable {
 		return ficheDePay;
 	}
 
-	public List<User> getUsers() {
-		return this.users;
+	public User getUser() {
+		return this.user;
 	}
 
-	public void setUsers(List<User> users) {
-		this.users = users;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
-	public User addUser(User user) {
-		getUsers().add(user);
-		user.setEmployee(this);
+	
 
-		return user;
-	}
-
-	public User removeUser(User user) {
-		getUsers().remove(user);
-		user.setEmployee(null);
-
-		return user;
-	}
+	
 
 }
