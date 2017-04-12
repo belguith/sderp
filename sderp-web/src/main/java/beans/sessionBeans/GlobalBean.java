@@ -7,8 +7,6 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletRequest;
 
 import entities.FicheDePaie;
 import entities.User;
@@ -93,7 +91,7 @@ public class GlobalBean {
 
 	/***** Fiche de Paie ******/
 	public String goToListFicheDePaie() {
-		this.listFicheDePaie = ficheDePaieLocal.findWithNamedQuery("Employee.findAll");
+		this.listFicheDePaie = ficheDePaieLocal.findWithNamedQuery("FicheDePaie.findAll");
 		this.selectedFicheDePaie = new FicheDePaie();
 		this.selectedFicheID = 0;
 		return "/pages/lists/fiche?faces-redirect=true";

@@ -1,0 +1,202 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	template="/WEB-INF/template/template.xhtml">
+	<ui:define name="content">
+
+
+		<div class="page-content">
+
+			<div class="row">
+				<div class="col-xs-12">
+					<!-- PAGE CONTENT BEGINS -->
+					<h3 class="header smaller lighter blue">Creer une nouvelle
+						fiche de paie</h3>
+					<h:form class="form-horizontal" role="form">
+
+						<div class="form-group has-error col-md-6">
+							<h:outputLabel for="employee" class="col-sm-4 control-label"
+								value="Employee :" />
+							<div class="col-sm-6">
+								<span class="block input-icon input-icon-right"> <h:selectOneMenu
+										value="#{fichebean.employeeID}" class="col-xs-10 col-sm-12"
+										id="employee" immediate="true">
+										<f:selectItems value="#{fichebean.allEmployees}" var="j"
+											itemLabel="#{j.lastName} #{j.firstName}" itemValue="#{j.id}" />
+									</h:selectOneMenu>
+								</span> &#160; &#160; &#160;
+								<div class="help-block col-sm-4 col-sm-reset inline">
+									<h:message for="employee" />
+								</div>
+							</div>
+						</div>
+						<div class="form-group has-error col-md-6">
+							<h:outputLabel for="matriculeCNSS" class="col-sm-4 control-label"
+								value="Matricule CNSS :" />
+							<div class="col-sm-6">
+								<span class="block input-icon input-icon-right"> <h:inputText
+										id="matriculeCNSS" class="col-xs-12 col-sm-12"
+										immediate="true" requiredMessage="This field is required"
+										required="true"
+										value="#{fichebean.selectedFicheDePaie.matriculeCnss}" />
+								</span> &#160; &#160; &#160;
+								<div class="help-block col-sm-4 col-sm-reset inline">
+									<h:message for="matriculeCNSS" />
+								</div>
+							</div>
+
+						</div>
+
+						<div class="form-group has-error col-md-6">
+
+							<h:outputLabel for="salaireDeBase" class="col-sm-4 control-label"
+								value="Salaire De Base :" />
+							<div class="col-sm-6">
+								<span class="block input-icon input-icon-right"> <h:inputText
+										pt:type="number" id="salaireDeBase"
+										class="col-xs-12 col-sm-12" immediate="true"
+										requiredMessage="This field is required" required="true"
+										value="#{fichebean.selectedFicheDePaie.salaireDeBase}" />
+								</span> &#160; &#160; &#160;
+								<div class="help-block col-sm-4 col-sm-reset inline">
+									<h:message for="salaireDeBase" />
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group has-error col-md-6">
+
+							<h:outputLabel for="primeDePresence"
+								class="col-sm-4 control-label" value="Prime De Presence :" />
+							<div class="col-sm-6">
+								<span class="block input-icon input-icon-right"> <h:inputText
+										pt:type="number" id="primeDePresence"
+										class="col-xs-12 col-sm-12" immediate="true"
+										requiredMessage="This field is required" required="true"
+										value="#{fichebean.selectedFicheDePaie.primeDePresence}" />
+								</span> &#160; &#160; &#160;
+								<div class="help-block col-sm-4 col-sm-reset inline">
+									<h:message for="primeDePresence" />
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group has-error col-md-6">
+
+							<h:outputLabel for="primeDePanier" class="col-sm-4 control-label"
+								value="Prime De Panier :" />
+							<div class="col-sm-6">
+								<span class="block input-icon input-icon-right"> <h:inputText
+										pt:type="number" id="primeDePanier"
+										class="col-xs-12 col-sm-12" immediate="true"
+										requiredMessage="This field is required" required="true"
+										value="#{fichebean.selectedFicheDePaie.primeDePanier}" />
+								</span> &#160; &#160; &#160;
+								<div class="help-block col-sm-4 col-sm-reset inline">
+									<h:message for="primeDePanier" />
+								</div>
+							</div>
+						</div>
+						<div class="form-group has-error col-md-6">
+
+							<h:outputLabel for="primeDeProduction"
+								class="col-sm-4 control-label" value="Prime De Production :" />
+							<div class="col-sm-6">
+								<span class="block input-icon input-icon-right"> <h:inputText
+										pt:type="number" id="primeDeProduction"
+										class="col-xs-12 col-sm-12" immediate="true"
+										requiredMessage="This field is required" required="true"
+										value="#{fichebean.selectedFicheDePaie.primeDeProduction}" />
+								</span> &#160; &#160; &#160;
+								<div class="help-block col-sm-4 col-sm-reset inline">
+									<h:message for="primeDeProduction" />
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group has-error col-md-6">
+
+							<h:outputLabel for="primeDeTransport"
+								class="col-sm-4 control-label" value="Prime De Transport :" />
+							<div class="col-sm-6">
+								<span class="block input-icon input-icon-right"> <h:inputText
+										pt:type="number" id="primeDeTransport"
+										class="col-xs-12 col-sm-12" immediate="true"
+										requiredMessage="This field is required" required="true"
+										value="#{fichebean.selectedFicheDePaie.primeDeTransport}" />
+								</span> &#160; &#160; &#160;
+								<div class="help-block col-sm-4 col-sm-reset inline">
+									<h:message for="primeDeTransport" />
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group has-error col-md-6">
+
+							<h:outputLabel for="primeSpeciale" class="col-sm-4 control-label"
+								value="Prime Speciale :" />
+							<div class="col-sm-6">
+								<span class="block input-icon input-icon-right"> <h:inputText
+										pt:type="number" id="primeSpeciale"
+										class="col-xs-12 col-sm-12" immediate="true"
+										requiredMessage="This field is required" required="true"
+										value="#{fichebean.selectedFicheDePaie.primeSpeciale}" />
+								</span> &#160; &#160; &#160;
+								<div class="help-block col-sm-4 col-sm-reset inline">
+									<h:message for="primeSpeciale" />
+								</div>
+							</div>
+						</div>
+						<div class="form-group has-error col-md-6">
+
+							<h:outputLabel for="retenueCNSS" class="col-sm-4 control-label"
+								value="Retenue CNSS :" />
+							<div class="col-sm-3">
+								<span class="block input-icon input-icon-right"> <h:inputText
+										pt:type="number" id="retenueCNSS" class="col-xs-12 col-sm-12"
+										immediate="true" requiredMessage="This field is required"
+										required="true"
+										value="#{fichebean.selectedFicheDePaie.retenueCnss}" />
+								</span>
+								<div class="help-block col-sm-4 col-sm-reset inline">
+									<h:message for="retenueCNSS" />
+								</div>
+							</div>
+							<span class="control-label">%</span>
+						</div>
+
+
+						<div class="clearfix form-actions">
+							<div class="col-md-offset-3 col-md-9">
+
+								<h:commandLink class="btn btn-info"
+									action="#{fichebean.doAddOrUpdateFicheDePaie()}" value="Submit">
+									<i class="ace-icon fa fa-check bigger-110"></i>
+								</h:commandLink>
+
+								&#160; &#160; &#160;
+
+
+								<h:commandLink class="btn" action="#" value="Reset">
+									<i class="ace-icon fa fa-undo bigger-110"></i>
+								</h:commandLink>
+							</div>
+						</div>
+
+					</h:form>
+
+					<!-- PAGE CONTENT ENDS -->
+				</div>
+				<!-- /.col -->
+			</div>
+
+			<!-- /.row -->
+		</div>
+		<!-- /.page-content -->
+
+	</ui:define>
+</ui:composition>

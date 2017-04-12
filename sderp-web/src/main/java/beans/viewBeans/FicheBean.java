@@ -1,6 +1,7 @@
 package beans.viewBeans;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -10,8 +11,10 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 
 import beans.sessionBeans.GlobalBean;
+import entities.Employee;
 import entities.FicheDePaie;
 import services.impl.FicheDePaieService;
+import services.interfaces.EmployeeServiceLocal;
 import utils.SalaryCalculations;
 
 @ManagedBean(name = "fichebean")
@@ -20,6 +23,12 @@ public class FicheBean {
 
 	@EJB
 	FicheDePaieService ficheDePaieLocal;
+	@EJB
+	EmployeeServiceLocal employeeLocal;
+
+	private List<Employee> allEmployees;
+	private Integer employeeID;
+
 	private List<FicheDePaie> listFicheDePaie;
 	private FicheDePaie selectedFicheDePaie;
 	private Integer selectedFicheDePaieID;
@@ -27,6 +36,7 @@ public class FicheBean {
 	private Double salaireNet;
 	private Double impotSurRevenu;
 	private Double salaireImposable;
+
 	// private UserType userTypes;
 	// private UserType selectedUserType;
 	@ManagedProperty(value = "#{globalbean}")
@@ -41,11 +51,23 @@ public class FicheBean {
 	public void init() {
 		this.selectedFicheDePaie = new FicheDePaie();
 		this.listFicheDePaie = new ArrayList<>();
-		this.selectedFicheDePaieID = 2;// 0;
+		this.allEmployees = new ArrayList<>();
+		this.selectedFicheDePaieID = /* 12; */ 0;
+		this.allEmployees = employeeLocal.findWithNamedQuery("Employee.findAll");
+		for (Employee employee : allEmployees) {
+			System.out.println("/////////////////////////");
+
+			System.out.println("___________________________________" + employee.getFirstName());
+
+			System.out.println("/////////////////////////");
+
+		}
 		System.out.println("Init User");
-		if (this.globalbean.getSelectedFicheID() == 0) {
-			this.selectedFicheDePaieID = 2;// this.globalbean.getSelectedFicheID();
+		if (this.globalbean.getSelectedFicheID() != 0) {
+			this.selectedFicheDePaieID = /* 2; */ this.globalbean.getSelectedFicheID();
 			this.selectedFicheDePaie = ficheDePaieLocal.find(selectedFicheDePaieID);
+			// this.allEmployees =
+			// employeeLocal.findWithNamedQuery("Employee.findAll");
 			this.salaireBrut = SalaryCalculations.salaireBruteMensuel(this.selectedFicheDePaie);
 			this.impotSurRevenu = SalaryCalculations.impoSurRevenue(this.selectedFicheDePaie);
 			this.salaireImposable = SalaryCalculations.salaireImposableMensuel(this.selectedFicheDePaie);
@@ -57,8 +79,18 @@ public class FicheBean {
 
 	public String doAddOrUpdateFicheDePaie() {
 		if (this.selectedFicheDePaieID == 0) {
+			this.selectedFicheDePaie.setEmployee(employeeLocal.find(employeeID));
+
+			this.selectedFicheDePaie.setDateFiche(new Date());
+			System.out.println("-------------------------------");
+			System.out.println("" + this.employeeID);
+			System.out.println("" + this.selectedFicheDePaie.getEmployee().getFirstName() + "---------"
+					+ this.selectedFicheDePaie.getEmployee().getLastName());
+			System.out.println("-------------------------------");
 			this.selectedFicheDePaie = ficheDePaieLocal.create(this.selectedFicheDePaie);
+			return this.globalbean.goToListFicheDePaie();
 		} else if (this.selectedFicheDePaieID != 0) {
+			this.selectedFicheDePaie.setDateFiche(new Date());
 			this.selectedFicheDePaie = ficheDePaieLocal.update(this.selectedFicheDePaie);
 		}
 		return this.globalbean.goToListFicheDePaie();
@@ -164,6 +196,20 @@ public class FicheBean {
 		this.salaireImposable = salaireImposable;
 	}
 
-	
-	
+	public List<Employee> getAllEmployees() {
+		return allEmployees;
+	}
+
+	public void setAllEmployees(List<Employee> allEmployees) {
+		this.allEmployees = allEmployees;
+	}
+
+	public Integer getEmployeeID() {
+		return employeeID;
+	}
+
+	public void setEmployeeID(Integer employeeID) {
+		this.employeeID = employeeID;
+	}
+
 }
