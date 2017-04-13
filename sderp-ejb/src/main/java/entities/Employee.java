@@ -25,6 +25,8 @@ public class Employee implements Serializable {
 
 	private Integer children;
 
+	private String email;
+
 	@Enumerated(EnumType.STRING)
 	private Dempartement departement;
 
@@ -225,6 +227,14 @@ public class Employee implements Serializable {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }

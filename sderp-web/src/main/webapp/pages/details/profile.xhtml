@@ -58,7 +58,7 @@
 
 											<div class="col-xs-12 col-sm-9">
 												<h4 class="blue">
-													<span class="middle">Alex M. Doe</span> <span
+													<span class="middle">#{profilebean.selectedUser.employee.firstName} #{profilebean.selectedUser.employee.lastName} </span> <span
 														class="label label-purple arrowed-in-right"> <i
 														class="ace-icon fa fa-circle smaller-80 align-middle"></i>
 														online
@@ -70,7 +70,7 @@
 														<div class="profile-info-name">Username</div>
 
 														<div class="profile-info-value">
-															<span>alexdoe</span>
+															<span><h:outputText value="#{profilebean.selectedUser.login}" /></span>
 														</div>
 													</div>
 

@@ -69,7 +69,7 @@ public class GlobalBean {
 			this.selectedUser = userLocal.find(selectedUserID);
 			this.breadcrumb.add(0, "Profile");
 			this.breadcrumb.add(1, "Employee");
-			return "/pages/details/employee?faces-redirect=true";
+			return "/pages/details/profile?faces-redirect=true";
 		}
 		this.breadcrumb.add(0, "List");
 		this.breadcrumb.add(1, "Employee");

@@ -55,7 +55,7 @@ public class ProfileBean {
 		if (this.globalbean.getSelectedUserID() != 0) {
 			this.selectedUserID = this.globalbean.getSelectedUserID();
 			this.selectedUser = userLocal.find(selectedUserID);
-			System.out.println("Details OK" + this.selectedUser.getName());
+			System.out.println("Details OK" + this.selectedUser.getLogin());
 		}
 
 	}

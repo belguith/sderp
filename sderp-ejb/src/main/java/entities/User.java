@@ -1,6 +1,7 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -35,9 +36,9 @@ public class User implements Serializable {
 
 	private String login;
 
-	private String name;
-
 	private String password;
+	
+	private Date lastLogin;
 
 	@Column(name = "user_type")
 	@Enumerated(EnumType.STRING)
@@ -51,12 +52,11 @@ public class User implements Serializable {
 	public User() {
 	}
 
-	public User(Byte active, String image, String login, String name, String password, UserType userType) {
+	public User(Byte active, String image, String login, String password, UserType userType) {
 		super();
 		this.active = active;
 		this.image = image;
 		this.login = login;
-		this.name = name;
 		this.password = password;
 		this.userType = userType;
 	}
@@ -93,13 +93,6 @@ public class User implements Serializable {
 		this.login = login;
 	}
 
-	public String getName() {
-		return this.name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	public String getPassword() {
 		return this.password;
@@ -124,5 +117,15 @@ public class User implements Serializable {
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
+
+	public Date getLastLogin() {
+		return lastLogin;
+	}
+
+	public void setLastLogin(Date lastLogin) {
+		this.lastLogin = lastLogin;
+	}
+	
+	
 
 }
