@@ -88,4 +88,11 @@ public class FicheDePaieService implements FicheDePaieServiceRemote, FicheDePaie
 		return this.em.createNativeQuery(sql, type).getResultList();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<FicheDePaie> findAllFichesByEmployeeId(Integer employeeId) {
+
+		return em.createQuery("SELECT f FROM FicheDePaie f WHERE f.employee.id = :param", FicheDePaie.class)
+				.setParameter("param", employeeId).getResultList();
+	}
 }

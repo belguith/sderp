@@ -6,9 +6,9 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
 	template="/WEB-INF/template/template.xhtml">
-	
-	
-	
+
+
+
 	<ui:define name="content">
 
 
@@ -29,7 +29,9 @@
 											Feed
 									</a></li>
 
-
+									<li><a data-toggle="tab" href="#salary"> <i
+											class="blue bigger-120">$</i> Fiches de paie
+									</a></li>
 
 
 								</ul>
@@ -49,20 +51,18 @@
 												<a href="#" class="btn btn-sm btn-block btn-success"> <i
 													class="ace-icon fa fa-plus-circle bigger-120"></i> <span
 													class="bigger-110">Add as a friend</span>
-												</a> <a href="#" class="btn btn-sm btn-block btn-primary"> <i
-													class="ace-icon fa fa-envelope-o bigger-110"></i> <span
-													class="bigger-110">Send a message</span>
 												</a>
 											</div>
 											<!-- /.col -->
 
 											<div class="col-xs-12 col-sm-9">
 												<h4 class="blue">
-													<span class="middle">#{profilebean.selectedUser.employee.firstName} #{profilebean.selectedUser.employee.lastName} </span> <span
-														class="label label-purple arrowed-in-right"> <i
-														class="ace-icon fa fa-circle smaller-80 align-middle"></i>
-														online
-													</span>
+
+													<span
+														class="label label-xlg label-primary arrowed arrowed-right">
+														#{profilebean.selectedUser.employee.firstName}
+														#{profilebean.selectedUser.employee.lastName} </span>
+
 												</h4>
 
 												<div class="profile-user-info">
@@ -70,200 +70,104 @@
 														<div class="profile-info-name">Username</div>
 
 														<div class="profile-info-value">
-															<span><h:outputText value="#{profilebean.selectedUser.login}" /></span>
+															<span> <h:outputText
+																	value="#{profilebean.selectedUser.login}" /></span>
+														</div>
+													</div>
+
+
+													<div class="profile-info-row">
+														<div class="profile-info-name">Poste</div>
+
+														<div class="profile-info-value">
+															<span><h:outputText
+																	value="#{profilebean.selectedUser.employee.jobTitle.toString()}" /></span>
+														</div>
+
+														<div class="profile-info-name">Deparetment</div>
+
+														<div class="profile-info-value">
+															<span><h:outputText
+																	value="#{profilebean.selectedUser.employee.departement}" /></span>
 														</div>
 													</div>
 
 													<div class="profile-info-row">
-														<div class="profile-info-name">Location</div>
+														<div class="profile-info-name">Email</div>
 
 														<div class="profile-info-value">
-															<i class="fa fa-map-marker light-orange bigger-110"></i>
-															<span>Netherlands</span> <span>Amsterdam</span>
+															<span>#{profilebean.selectedUser.employee.email}</span>
+														</div>
+														<div class="profile-info-name">Responsable</div>
+
+														<div class="profile-info-value">
+															<span>#{profilebean.selectedUser.employee.employee.firstName}
+																#{profilebean.selectedUser.employee.employee.lastName}</span>
 														</div>
 													</div>
 
 													<div class="profile-info-row">
-														<div class="profile-info-name">Age</div>
+														<div class="profile-info-name">CIN</div>
 
 														<div class="profile-info-value">
-															<span>38</span>
+															<span> <h:outputText
+																	value="#{profilebean.selectedUser.employee.numCin}" />
+															</span>
+														</div>
+														<div class="profile-info-name">CNSS</div>
+
+														<div class="profile-info-value">
+
+															<span> <h:outputText
+																	value="#{profilebean.selectedUser.employee.numCnss}">
+																	<i class="fa fa-id-card light-orange bigger-110"></i>
+
+																</h:outputText>
+															</span>
 														</div>
 													</div>
 
 													<div class="profile-info-row">
-														<div class="profile-info-name">Joined</div>
+														<div class="profile-info-name">Categorie</div>
 
 														<div class="profile-info-value">
-															<span>2010/06/20</span>
+															<span>#{profilebean.selectedUser.employee.category}</span>
+														</div>
+														<div class="profile-info-name">Echelon</div>
+
+														<div class="profile-info-value">
+															<span>#{profilebean.selectedUser.employee.echelon}</span>
 														</div>
 													</div>
 
 													<div class="profile-info-row">
-														<div class="profile-info-name">Last Online</div>
+														<div class="profile-info-name">Famille</div>
 
 														<div class="profile-info-value">
-															<span>3 hours ago</span>
+															<span>#{profilebean.selectedUser.employee.family}</span>
+														</div>
+														<div class="profile-info-name">Enfants</div>
+
+														<div class="profile-info-value">
+															<span>#{profilebean.selectedUser.employee.children}</span>
 														</div>
 													</div>
+
+
+
+
+
+
+
 												</div>
 
-												<div class="hr hr-8 dotted"></div>
 
-												<div class="profile-user-info">
-													<div class="profile-info-row">
-														<div class="profile-info-name">Website</div>
-
-														<div class="profile-info-value">
-															<a href="#" target="_blank">www.alexdoe.com</a>
-														</div>
-													</div>
-
-													<div class="profile-info-row">
-														<div class="profile-info-name">
-															<i
-																class="middle ace-icon fa fa-facebook-square bigger-150 blue"></i>
-														</div>
-
-														<div class="profile-info-value">
-															<a href="#">Find me on Facebook</a>
-														</div>
-													</div>
-
-													<div class="profile-info-row">
-														<div class="profile-info-name">
-															<i
-																class="middle ace-icon fa fa-twitter-square bigger-150 light-blue"></i>
-														</div>
-
-														<div class="profile-info-value">
-															<a href="#">Follow me on Twitter</a>
-														</div>
-													</div>
-												</div>
 											</div>
 											<!-- /.col -->
 										</div>
 										<!-- /.row -->
 
 										<div class="space-20"></div>
-
-										<div class="row">
-											<div class="col-xs-12 col-sm-6">
-												<div class="widget-box transparent">
-													<div class="widget-header widget-header-small">
-														<h4 class="widget-title smaller">
-															<i class="ace-icon fa fa-check-square-o bigger-110"></i>
-															Little About Me
-														</h4>
-													</div>
-
-													<div class="widget-body">
-														<div class="widget-main">
-															<p>My job is mostly lorem ipsuming and dolor sit
-																ameting as long as consectetur adipiscing elit.</p>
-															<p>Sometimes quisque commodo massa gets in the way
-																and sed ipsum porttitor facilisis.</p>
-															<p>The best thing about my job is that vestibulum id
-																ligula porta felis euismod and nullam quis risus eget
-																urna mollis ornare.</p>
-															<p>Thanks for visiting my profile.</p>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<div class="col-xs-12 col-sm-6">
-												<div class="widget-box transparent">
-													<div
-														class="widget-header widget-header-small header-color-blue2">
-														<h4 class="widget-title smaller">
-															<i class="ace-icon fa fa-lightbulb-o bigger-120"></i> My
-															Skills
-														</h4>
-													</div>
-
-													<div class="widget-body">
-														<div class="widget-main padding-16">
-															<div class="clearfix">
-																<div class="grid3 center">
-																	<div class="easy-pie-chart percentage"
-																		data-percent="45" data-color="#CA5952">
-																		<span class="percent">45</span>%
-																	</div>
-
-																	<div class="space-2"></div>
-																	Graphic Design
-																</div>
-
-																<div class="grid3 center">
-																	<div class="center easy-pie-chart percentage"
-																		data-percent="90" data-color="#59A84B">
-																		<span class="percent">90</span>%
-																	</div>
-
-																	<div class="space-2"></div>
-																	HTML5 CSS3
-																</div>
-
-																<div class="grid3 center">
-																	<div class="center easy-pie-chart percentage"
-																		data-percent="80" data-color="#9585BF">
-																		<span class="percent">80</span>%
-																	</div>
-
-																	<div class="space-2"></div>
-																	Javascript/jQuery
-																</div>
-															</div>
-
-															<div class="hr hr-16"></div>
-
-															<div class="profile-skills">
-																<div class="progress">
-																	<div class="progress-bar" style="width: 80%">
-																		<span class="pull-left">HTML5 CSS3</span> <span
-																			class="pull-right">80%</span>
-																	</div>
-																</div>
-
-																<div class="progress">
-																	<div class="progress-bar progress-bar-success"
-																		style="width: 72%">
-																		<span class="pull-left">Javascript jQuery</span> <span
-																			class="pull-right">72%</span>
-																	</div>
-																</div>
-
-																<div class="progress">
-																	<div class="progress-bar progress-bar-purple"
-																		style="width: 70%">
-																		<span class="pull-left">PHP MySQL</span> <span
-																			class="pull-right">70%</span>
-																	</div>
-																</div>
-
-																<div class="progress">
-																	<div class="progress-bar progress-bar-warning"
-																		style="width: 50%">
-																		<span class="pull-left">Wordpress</span> <span
-																			class="pull-right">50%</span>
-																	</div>
-																</div>
-
-																<div class="progress">
-																	<div class="progress-bar progress-bar-danger"
-																		style="width: 38%">
-																		<span class="pull-left">Photoshop</span> <span
-																			class="pull-right">38%</span>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
 									</div>
 									<!-- /#home -->
 
@@ -496,6 +400,137 @@
 										</div>
 									</div>
 									<!-- /#feed -->
+
+									<div id="salary" class="tab-pane">
+
+
+										<div class="col-xs-12">
+											<table id="simple-table"
+												class="table  table-bordered table-hover">
+												<thead>
+													<tr>
+
+														<th class="center"><label class="pos-rel"> <input
+																type="checkbox" class="ace" /> <span class="lbl"></span>
+														</label></th>
+
+
+														<th><i
+															class="ace-icon fa fa-calendar bigger-110 hidden-480"></i>Date
+															de saisie</th>
+
+														<th><i class="fa fa-barcode bigger-110 hidden-480"></i>
+															Matricule CNSS</th>
+
+														<th class="hidden-480"><i
+															class="ace-icon fa fa-user bigger-110 hidden-480"></i>Employee</th>
+
+														<th><i
+															class="ace-icon fa fa-tachometer bigger-110 hidden-480"></i>
+															Retenue CNSS</th>
+
+
+
+														<th></th>
+													</tr>
+												</thead>
+
+												<tbody>
+
+													<ui:repeat var="u"
+														value="#{globalbean.allfichesByEmployee(profilebean.selectedUser.employee.id)}">
+														<tr>
+															<td class="center"><label class="pos-rel"> <input
+																	type="checkbox" class="ace" /> <span class="lbl"></span>
+															</label></td>
+
+
+
+															<td><h:outputText value="#{u.dateFiche.toString()}" /></td>
+															<td><h:outputText value="#{u.matriculeCnss}" /></td>
+															<td><h:outputText
+																	value="#{u.employee.lastName} #{u.employee.firstName}" /></td>
+															<td><h:outputText value="#{u.retenueCnss} %" /></td>
+
+
+
+
+
+
+
+															<td>
+																<div class="hidden-sm hidden-xs btn-group">
+																	<h:commandLink class="btn btn-xs btn-info "
+																		action="#{globalbean.goToDetailsFicheDePaie()}"
+																		value="">
+																		<i class="ace-icon fa fa-search-plus bigger-130"></i>
+																		<f:setPropertyActionListener
+																			target="#{globalbean.selectedFicheID}"
+																			value="#{u.id}" />
+																	</h:commandLink>
+
+
+
+
+
+
+																</div>
+
+															</td>
+														</tr>
+
+														<tr class="detail-row">
+															<td colspan="8">
+																<div class="table-detail">
+																	<div class="row">
+																		<div class="col-xs-12 col-sm-2">
+																			<div class="text-center">
+																				<img height="150" width="200"
+																					class="thumbnail inline no-margin-bottom"
+																					alt="Domain Owner's Avatar"
+																					src="../../resources/assets/images/avatars/avatar.png" />
+																				<br />
+																				<div
+																					class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
+																					<div class="inline position-relative">
+																						<a class="user-title-label" href="#"> <i
+																							class="ace-icon fa fa-circle light-green"></i> <span
+																							class="white">#{u.employee.firstName}
+																								#{u.employee.lastName}</span>
+																						</a>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+
+																		<div class="col-xs-12 col-sm-6">
+																			<div class="space visible-xs"></div>
+
+
+
+																		</div>
+																	</div>
+
+
+
+																</div>
+
+															</td>
+														</tr>
+													</ui:repeat>
+												</tbody>
+											</table>
+
+
+											<!-- PAGE CONTENT ENDS -->
+										</div>
+										<!-- /.col -->
+
+
+
+									</div>
+									<!-- /#salary -->
+
 
 								</div>
 							</div>

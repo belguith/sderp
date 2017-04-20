@@ -50,6 +50,9 @@ public class GlobalBean {
 		this.listFicheDePaie = ficheDePaieLocal.findWithNamedQuery("FicheDePaie.findAll");
 	}
 
+	public List<FicheDePaie> allfichesByEmployee(Integer employeeId) {
+		return ficheDePaieLocal.findAllFichesByEmployeeId(employeeId);
+	}
 	///////////////////////// Core Methods //////////////////////////////////
 
 	////////////////////////// Navigation Actions////////////////////////////
@@ -94,7 +97,7 @@ public class GlobalBean {
 		this.listFicheDePaie = ficheDePaieLocal.findWithNamedQuery("FicheDePaie.findAll");
 		this.selectedFicheDePaie = new FicheDePaie();
 		this.selectedFicheID = 0;
-		return "/pages/lists/fiche?faces-redirect=true";
+		return "/pages/lists/fiches?faces-redirect=true";
 	}
 
 	public String goToDetailsFicheDePaie() {

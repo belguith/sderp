@@ -82,11 +82,6 @@ public class FicheBean {
 			this.selectedFicheDePaie.setEmployee(employeeLocal.find(employeeID));
 
 			this.selectedFicheDePaie.setDateFiche(new Date());
-			System.out.println("-------------------------------");
-			System.out.println("" + this.employeeID);
-			System.out.println("" + this.selectedFicheDePaie.getEmployee().getFirstName() + "---------"
-					+ this.selectedFicheDePaie.getEmployee().getLastName());
-			System.out.println("-------------------------------");
 			this.selectedFicheDePaie = ficheDePaieLocal.create(this.selectedFicheDePaie);
 			return this.globalbean.goToListFicheDePaie();
 		} else if (this.selectedFicheDePaieID != 0) {

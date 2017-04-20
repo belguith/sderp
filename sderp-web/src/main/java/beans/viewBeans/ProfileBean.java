@@ -62,8 +62,11 @@ public class ProfileBean {
 
 	public String doAddOrUpdate() {
 		if (this.selectedUserID == 0) {
+			System.out.println("Ajout");
 			this.selectedUser = userLocal.create(this.selectedUser);
 		} else if (this.selectedUserID != 0) {
+			System.out.println("Update");
+
 			this.selectedUser = userLocal.update(this.selectedUser);
 		}
 

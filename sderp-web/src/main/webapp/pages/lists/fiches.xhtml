@@ -5,7 +5,6 @@
 	xmlns:jsf="http://xmlns.jcp.org/jsf"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/template/template.xhtml">
 	<ui:define name="content">
 
@@ -14,14 +13,149 @@
 			<h:form>
 				<div class="row">
 					<div class="col-xs-12">
+						<h3 class="header smaller lighter blue">Liste des fiches de
+							paie</h3>
+
+						<div class="clearfix">
+							<div class="pull-right tableTools-container">
+								<h:commandLink class="btn btn-primary"
+									action="#{globalbean.goToEditFicheDePaie()}" value="">
+									<i class="ace-icon fa fa-plus bigger-160"></i> Nouveau
+									</h:commandLink>
+							</div>
+						</div>
 						<!-- PAGE CONTENT BEGINS -->
-						<p:dataList value="#{globalbean.listFicheDePaie}" var="ficheDePaie"
-							type="ordered">
-							<f:facet name="header">
-            				fiches de paie
-        					</f:facet>
-        					#{ficheDePaie.dateFiche}, #{ficheDePaie.employee.lastName} ,#{ficheDePaie.employee.firstName}
-    					</p:dataList>
+						<!-- 					
+
+	<p:dataList value="#{globalbean.listFicheDePaie}" var="ficheDePaie" -->
+						<!-- 							type="ordered"> -->
+						<!-- 							<f:facet name="header"> -->
+						<!--             				fiches de paie -->
+						<!--         					</f:facet> -->
+						<!--         					#{ficheDePaie.dateFiche}, #{ficheDePaie.employee.lastName} ,#{ficheDePaie.employee.firstName} -->
+						<!--     					</p:dataList> -->
+
+
+
+
+
+						<table id="simple-table" class="table  table-bordered table-hover">
+							<thead>
+								<tr>
+
+									<th class="center"><label class="pos-rel"> <input
+											type="checkbox" class="ace" /> <span class="lbl"></span>
+									</label></th>
+
+
+									<th><i
+										class="ace-icon fa fa-calendar bigger-110 hidden-480"></i>Date
+										de saisie</th>
+
+									<th><i class="fa fa-barcode bigger-110 hidden-480"></i>
+										Matricule CNSS</th>
+
+									<th class="hidden-480"><i
+										class="ace-icon fa fa-user bigger-110 hidden-480"></i>Employee</th>
+
+									<th><i
+										class="ace-icon fa fa-tachometer bigger-110 hidden-480"></i>
+										Retenue CNSS</th>
+
+
+
+									<th></th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<ui:repeat var="u" value="#{globalbean.listFicheDePaie}">
+									<tr>
+										<td class="center"><label class="pos-rel"> <input
+												type="checkbox" class="ace" /> <span class="lbl"></span>
+										</label></td>
+
+
+
+										<td><h:outputText value="#{u.dateFiche.toString()}" /></td>
+										<td><h:outputText value="#{u.matriculeCnss}" /></td>
+										<td><h:outputText
+												value="#{u.employee.lastName} #{u.employee.firstName}" /></td>
+										<td><h:outputText value="#{u.retenueCnss} %" /></td>
+
+
+
+
+
+
+
+										<td>
+											<div class="hidden-sm hidden-xs btn-group">
+												<h:commandLink class="btn btn-xs btn-info "
+													action="#{globalbean.goToDetailsFicheDePaie()}" value="">
+													<i class="ace-icon fa fa-search-plus bigger-130"></i>
+													<f:setPropertyActionListener
+														target="#{globalbean.selectedFicheID}" value="#{u.id}" />
+												</h:commandLink>
+
+												<h:commandLink class="btn btn-xs btn-warning"
+													action="#{globalbean.goToEditFicheDePaie()}" value="">
+													<i class="ace-icon fa fa-pencil bigger-120"></i>
+													<f:setPropertyActionListener
+														target="#{globalbean.selectedFicheID}" value="#{u.id}" />
+												</h:commandLink>
+
+
+
+
+											</div>
+
+										</td>
+									</tr>
+
+									<tr class="detail-row">
+										<td colspan="8">
+											<div class="table-detail">
+												<div class="row">
+													<div class="col-xs-12 col-sm-2">
+														<div class="text-center">
+															<img height="150" width="200"
+																class="thumbnail inline no-margin-bottom"
+																alt="Domain Owner's Avatar"
+																src="../../resources/assets/images/avatars/avatar.png" />
+															<br />
+															<div
+																class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
+																<div class="inline position-relative">
+																	<a class="user-title-label" href="#"> <i
+																		class="ace-icon fa fa-circle light-green"></i> <span
+																		class="white">#{u.employee.firstName}
+																			#{u.employee.lastName}</span>
+																	</a>
+																</div>
+															</div>
+														</div>
+													</div>
+
+													<div class="col-xs-12 col-sm-6">
+														<div class="space visible-xs"></div>
+
+
+
+													</div>
+												</div>
+
+
+
+											</div>
+
+										</td>
+									</tr>
+								</ui:repeat>
+							</tbody>
+						</table>
+
+
 						<!-- PAGE CONTENT ENDS -->
 					</div>
 					<!-- /.col -->

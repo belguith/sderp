@@ -19,9 +19,9 @@
 					<h:form class="form-horizontal" role="form">
 
 						<div class="form-group has-error col-md-6">
-
+							<hr />
 							<h:outputLabel for="firstName" class="col-sm-2 control-label"
-								value="First Name :" />
+								value="First Name" />
 							<div class="col-sm-6">
 								<span class="block input-icon input-icon-right"> <h:inputText
 										id="firstName" class="col-xs-12 col-sm-12" immediate="true"
@@ -35,28 +35,10 @@
 
 						</div>
 
-
-
 						<div class="form-group has-error col-md-6">
-							<h:outputLabel for="numCin" class="col-sm-2 control-label"
-								value="Num Cin :" />
-							<div class="col-sm-6">
-								<span class="block input-icon input-icon-right"> <h:inputText
-										id="numCin" class="col-xs-12 col-sm-12" immediate="true"
-										requiredMessage="This field is required" required="true"
-										value="#{profilebean.selectedUser.employee.numCin}" />
-								</span> &#160; &#160; &#160;
-								<div class="help-block col-sm-2 col-sm-reset inline">
-									<h:message for="numCin" />
-								</div>
-							</div>
-
-						</div>
-
-						<div class="form-group has-error col-md-6">
-
+							<hr />
 							<h:outputLabel for="lastName" class="col-sm-2 control-label"
-								value="Last Name :" />
+								value="Last Name" />
 							<div class="col-sm-6">
 								<span class="block input-icon input-icon-right"> <h:inputText
 										id="lastName" class="col-xs-12 col-sm-12" immediate="true"
@@ -71,24 +53,8 @@
 
 						<div class="form-group has-error col-md-6">
 
-							<h:outputLabel for="numCnss" class="col-sm-2 control-label"
-								value="Num Cnss :" />
-							<div class="col-sm-6">
-								<span class="block input-icon input-icon-right"> <h:inputText
-										id="numCnss" class="col-xs-12 col-sm-12" immediate="true"
-										requiredMessage="This field is required" required="true"
-										value="#{profilebean.selectedUser.employee.numCnss}" />
-								</span> &#160; &#160; &#160;
-								<div class="help-block col-sm-2 col-sm-reset inline">
-									<h:message for="numCnss" />
-								</div>
-							</div>
-						</div>
-
-						<div class="form-group has-error col-md-6">
-
 							<h:outputLabel for="Departement" class="col-sm-2 control-label"
-								value="Departement :" />
+								value="Departement" />
 							<div class="col-sm-6">
 								<span class="block input-icon input-icon-right"> <h:selectOneMenu
 										value="#{profilebean.selectedUser.employee.departement}"
@@ -106,10 +72,10 @@
 						<div class="form-group has-error col-md-6">
 
 							<h:outputLabel for="jobTitle" class="col-sm-2 control-label"
-								value="Fonction :" />
+								value="Fonction" />
 							<div class="col-sm-6">
 								<span class="block input-icon input-icon-right"> <h:selectOneMenu
-										value="#{profilebean.selectedUser.employee.departement}"
+										value="#{profilebean.selectedUser.employee.jobTitle}"
 										class="col-xs-10 col-sm-12" id="jobTitle" immediate="true">
 										<f:selectItems value="#{profilebean.jobTitles}" var="j"
 											itemLabel="#{j.toString()}" itemValue="#{j.name()}" />
@@ -118,6 +84,136 @@
 								</span> &#160; &#160; &#160;
 								<div class="help-block col-sm-2 col-sm-reset inline">
 									<h:message for="jobTitle" />
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group has-error col-md-6">
+							<h:outputLabel for="numCin" class="col-sm-2 control-label"
+								value="Num Cin" />
+							<div class="col-sm-6">
+								<span class="block input-icon input-icon-right"> <h:inputText
+										id="numCin" class="col-xs-12 col-sm-12" immediate="true"
+										requiredMessage="This field is required" required="true"
+										value="#{profilebean.selectedUser.employee.numCin}" />
+								</span> &#160; &#160; &#160;
+								<div class="help-block col-sm-2 col-sm-reset inline">
+									<h:message for="numCin" />
+								</div>
+							</div>
+
+						</div>
+
+
+
+						<div class="form-group has-error col-md-6">
+
+							<h:outputLabel for="numCnss" class="col-sm-2 control-label"
+								value="Num Cnss" />
+							<div class="col-sm-6">
+								<span class="block input-icon input-icon-right"> <h:inputText
+										id="numCnss" class="col-xs-12 col-sm-12" immediate="true"
+										requiredMessage="This field is required" required="true"
+										value="#{profilebean.selectedUser.employee.numCnss}" />
+								</span> &#160; &#160; &#160;
+								<div class="help-block col-sm-2 col-sm-reset inline">
+									<h:message for="numCnss" />
+								</div>
+							</div>
+						</div>
+
+
+
+
+						<div class="form-group has-error col-md-6">
+
+							<h:outputLabel for="category" class="col-sm-2 control-label"
+								value="Categorie" />
+							<div class="col-sm-6">
+								<span class="block input-icon input-icon-right"> <h:inputText
+										id="category" class="col-xs-12 col-sm-12" immediate="true"
+										requiredMessage="This field is required" required="true"
+										pt:type="number"
+										value="#{profilebean.selectedUser.employee.category}" />
+								</span> &#160; &#160; &#160;
+								<div class="help-block col-sm-2 col-sm-reset inline">
+									<h:message for="category" />
+								</div>
+							</div>
+						</div>
+
+
+						<div class="form-group has-error col-md-6">
+
+							<h:outputLabel for="echelon" class="col-sm-2 control-label"
+								value="Echelon" />
+							<div class="col-sm-6">
+								<span class="block input-icon input-icon-right"> <h:inputText
+										id="echelon" class="col-xs-12 col-sm-12" immediate="true"
+										requiredMessage="This field is required" required="true"
+										pt:type="number"
+										value="#{profilebean.selectedUser.employee.echelon}" />
+								</span> &#160; &#160; &#160;
+								<div class="help-block col-sm-2 col-sm-reset inline">
+									<h:message for="echelon" />
+								</div>
+							</div>
+						</div>
+
+
+
+						<div class="form-group has-error col-md-6">
+
+							<h:outputLabel for="famille" class="col-sm-2 control-label"
+								value="Famille" />
+							<div class="col-sm-6">
+								<span class="block input-icon input-icon-right"> <h:selectBooleanCheckbox
+										id="famille" class="col-xs-12 col-sm-12" immediate="true"
+										requiredMessage="This field is required" required="true"
+										
+										value="#{profilebean.selectedUser.employee.family}">
+									
+									
+									</h:selectBooleanCheckbox>
+
+								</span> &#160; &#160; &#160;
+								<div class="help-block col-sm-2 col-sm-reset inline">
+									<h:message for="famille" />
+								</div>
+							</div>
+						</div>
+
+
+						<div class="form-group has-error col-md-6">
+
+							<h:outputLabel for="children" class="col-sm-2 control-label"
+								value="Enfants" />
+							<div class="col-sm-6">
+								<span class="block input-icon input-icon-right"> <h:inputText
+										id="children" class="col-xs-12 col-sm-12" immediate="true"
+										requiredMessage="This field is required" required="true"
+										pt:type="number"
+										value="#{profilebean.selectedUser.employee.children}" />
+								</span> &#160; &#160; &#160;
+								<div class="help-block col-sm-2 col-sm-reset inline">
+									<h:message for="children" />
+								</div>
+							</div>
+						</div>
+						
+						
+						<div class="form-group has-error col-md-6">
+
+							<h:outputLabel for="email" class="col-sm-2 control-label"
+								value="Email" />
+							<div class="col-sm-6">
+								<span class="block input-icon input-icon-right"> <h:inputText
+										id="email" class="col-xs-12 col-sm-12" immediate="true"
+										requiredMessage="This field is required" required="true"
+										value="#{profilebean.selectedUser.employee.email}" />
+								</span> &#160; &#160; &#160;
+								<div class="help-block col-sm-2 col-sm-reset inline">
+									<h:message for="email" />
 								</div>
 							</div>
 						</div>
