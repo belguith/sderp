@@ -69,7 +69,8 @@ public class GlobalBean {
 
 	public String goToDetailsEmployee() {
 		if (this.selectedUserID != 0) {
-			this.selectedUser = userLocal.find(selectedUserID);
+			System.out.println("globalbean.selectduserID " + this.selectedUserID);
+
 			this.breadcrumb.add(0, "Profile");
 			this.breadcrumb.add(1, "Employee");
 			return "/pages/details/profile?faces-redirect=true";
@@ -81,7 +82,7 @@ public class GlobalBean {
 
 	public String goToEditEmloyee() {
 		if (this.selectedUserID != 0) {
-			this.selectedUser = userLocal.find(selectedUserID);
+			System.out.println("globalbean.selectduserID " + this.selectedUserID);
 			this.breadcrumb.add(0, "Form");
 			this.breadcrumb.add(1, "Employee");
 			return "/pages/forms/employee?faces-redirect=true";

@@ -16,7 +16,7 @@
 					<!-- PAGE CONTENT BEGINS -->
 					<h3 class="header smaller lighter blue">Ajouter un nouvel
 						employee</h3>
-					<h:form class="form-horizontal" role="form">
+					<h:form class="form-horizontal" role="form" enctype="multipart/form-data">
 
 						<div class="form-group has-error col-md-6">
 							<hr />
@@ -201,7 +201,7 @@
 							</div>
 						</div>
 						
-						
+						<hr/>
 						<div class="form-group has-error col-md-6">
 
 							<h:outputLabel for="email" class="col-sm-2 control-label"
@@ -214,6 +214,98 @@
 								</span> &#160; &#160; &#160;
 								<div class="help-block col-sm-2 col-sm-reset inline">
 									<h:message for="email" />
+								</div>
+							</div>
+						</div>
+						
+						
+						
+						
+						<div class="form-group has-error col-md-6">
+
+							<h:outputLabel for="login" class="col-sm-2 control-label"
+								value="Login" />
+							<div class="col-sm-6">
+								<span class="block input-icon input-icon-right"> <h:inputText
+										id="login" class="col-xs-12 col-sm-12" immediate="true"
+										requiredMessage="This field is required" required="true"
+										value="#{profilebean.selectedUser.login}" />
+								</span> &#160; &#160; &#160;
+								<div class="help-block col-sm-2 col-sm-reset inline">
+									<h:message for="login" />
+								</div>
+							</div>
+						</div>
+						
+						<div class="form-group has-error col-md-6">
+
+							<h:outputLabel for="pwd" class="col-sm-2 control-label"
+								value="Mot de passe" />
+							<div class="col-sm-6">
+								<span class="block input-icon input-icon-right"> <h:inputText
+										id="pwd" class="col-xs-12 col-sm-12" immediate="true"
+										requiredMessage="This field is required" required="true"
+										value="#{profilebean.selectedUser.password}" />
+								</span> &#160; &#160; &#160;
+								<div class="help-block col-sm-2 col-sm-reset inline">
+									<h:message for="pwd" />
+								</div>
+							</div>
+						</div>
+						
+						
+						
+						<div class="form-group has-error col-md-6">
+
+							<h:outputLabel for="usertype" class="col-sm-2 control-label"
+								value="Type" />
+							<div class="col-sm-6">
+								<span class="block input-icon input-icon-right"> <h:selectOneMenu
+										value="#{profilebean.selectedUser.userType}"
+										class="col-xs-10 col-sm-12" id="usertype" immediate="true">
+										<f:selectItems value="#{profilebean.userTypes}" var="t"
+											itemLabel="#{t.toString()}" itemValue="#{t.name()}" />
+									</h:selectOneMenu>
+
+								</span> &#160; &#160; &#160;
+								<div class="help-block col-sm-2 col-sm-reset inline">
+									<h:message for="usertype" />
+								</div>
+							</div>
+						</div>
+						
+						<div class="form-group has-error col-md-6">
+
+							<h:outputLabel for="image" class="col-sm-2 control-label"
+								value="Photo" />
+							<div class="col-sm-6">
+								<span class="block input-icon input-icon-right"> <h:inputFile
+										id="image" class="col-xs-10 col-sm-10" immediate="true"
+										requiredMessage="This field is required" required="false"
+										value="#{profilebean.selectedUser.image}" />
+								</span> &#160; &#160; &#160;
+								<div class="help-block col-sm-2 col-sm-reset inline">
+									<h:message for="image" />
+								</div>
+							</div>
+						</div>
+						
+						<div class="form-group has-error col-md-6">
+
+							<h:outputLabel for="manager" class="col-sm-2 control-label"
+								value="Manager" />
+							<div class="col-sm-6">
+								<span class="block input-icon input-icon-right"> <h:selectOneMenu 
+										value="#{profilebean.selectedManagerID}"
+										class="col-xs-10 col-sm-12" id="manager" immediate="true">
+										<f:selectItem itemLabel="--Select a Manager--" itemValue="#{0}"/>
+										<f:selectItems value="#{globalbean.listUser}" var="t" noSelectionValue=""
+											itemLabel="#{t.employee.firstName} #{t.employee.lastName}" itemValue="#{t.employee.id}" />
+									</h:selectOneMenu>
+
+								</span> &#160; &#160; &#160;
+								<div class="help-block col-sm-2 col-sm-reset inline">
+									<h:message for="manager" />
 								</div>
 							</div>
 						</div>

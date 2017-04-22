@@ -15,6 +15,7 @@ import entities.User;
 import enums.Dempartement;
 import enums.JobTitle;
 import enums.UserType;
+import services.interfaces.EmployeeServiceLocal;
 import services.interfaces.UserServiceLocal;
 
 @ManagedBean(name = "profilebean")
@@ -23,6 +24,9 @@ public class ProfileBean {
 
 	@EJB
 	UserServiceLocal userLocal;
+	
+	@EJB
+	EmployeeServiceLocal employeeLocal;
 
 	@ManagedProperty(value = "#{globalbean}")
 	private GlobalBean globalbean;
@@ -34,6 +38,8 @@ public class ProfileBean {
 	private User selectedUser;
 	private Integer selectedUserID;
 	private Boolean falilly = false;
+	private Integer selectedManagerID=0;
+	
 
 	public ProfileBean() {
 		super();
@@ -48,12 +54,15 @@ public class ProfileBean {
 
 		this.selectedUser = new User();
 		this.selectedUser.setEmployee(new Employee());
-		this.listUser = new ArrayList<>();
+		this.listUser = globalbean.getListUser();
 		this.selectedUserID = 0;
+		this.selectedManagerID=0;
 
 		if (this.globalbean.getSelectedUserID() != 0) {
+			System.out.println("selected user "+this.globalbean.getSelectedUserID());
 			this.selectedUserID = this.globalbean.getSelectedUserID();
 			this.selectedUser = userLocal.find(selectedUserID);
+			
 			System.out.println("Details OK" + this.selectedUser.getLogin());
 		}
 
@@ -62,11 +71,16 @@ public class ProfileBean {
 	public String doAddOrUpdate() {
 		if (this.selectedUserID == 0) {
 			System.out.println("Ajout");
-
+			System.out.println("manager id "+this.selectedManagerID);
+			if(this.selectedManagerID!=0)
+			this.selectedUser.getEmployee().setEmployee(employeeLocal.find(selectedManagerID));
+			this.selectedUser.setEmployee(employeeLocal.create(this.selectedUser.getEmployee()));
 			this.selectedUser = userLocal.create(this.selectedUser);
 		} else if (this.selectedUserID != 0) {
 			System.out.println("Update");
-
+			if(this.selectedManagerID!=0)
+			this.selectedUser.getEmployee().setEmployee(employeeLocal.find(selectedManagerID));
+			this.selectedUser.setEmployee(employeeLocal.update(this.selectedUser.getEmployee()));
 			this.selectedUser = userLocal.update(this.selectedUser);
 		}
 
@@ -145,5 +159,15 @@ public class ProfileBean {
 	public void setFalilly(Boolean falilly) {
 		this.falilly = falilly;
 	}
+
+	public Integer getSelectedManagerID() {
+		return selectedManagerID;
+	}
+
+	public void setSelectedManagerID(Integer selectedManagerID) {
+		this.selectedManagerID = selectedManagerID;
+	}
+	
+	
 
 }
