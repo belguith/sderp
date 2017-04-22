@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
@@ -30,14 +31,15 @@ public class User implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	private Byte active;
+	private Boolean active;
 
+	@Lob
 	private String image;
 
 	private String login;
 
 	private String password;
-	
+
 	private Date lastLogin;
 
 	@Column(name = "user_type")
@@ -52,7 +54,7 @@ public class User implements Serializable {
 	public User() {
 	}
 
-	public User(Byte active, String image, String login, String password, UserType userType) {
+	public User(Boolean active, String image, String login, String password, UserType userType) {
 		super();
 		this.active = active;
 		this.image = image;
@@ -69,11 +71,11 @@ public class User implements Serializable {
 		this.id = id;
 	}
 
-	public Byte getActive() {
+	public Boolean getActive() {
 		return this.active;
 	}
 
-	public void setActive(Byte active) {
+	public void setActive(Boolean active) {
 		this.active = active;
 	}
 
@@ -92,7 +94,6 @@ public class User implements Serializable {
 	public void setLogin(String login) {
 		this.login = login;
 	}
-
 
 	public String getPassword() {
 		return this.password;
@@ -125,7 +126,5 @@ public class User implements Serializable {
 	public void setLastLogin(Date lastLogin) {
 		this.lastLogin = lastLogin;
 	}
-	
-	
 
 }

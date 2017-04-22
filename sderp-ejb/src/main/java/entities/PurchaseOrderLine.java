@@ -19,12 +19,12 @@ public class PurchaseOrderLine implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 
-	private Byte active;
+	private Boolean active;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
 
-	private Byte invoiced;
+	private Boolean invoiced;
 
 	private String name;
 
@@ -63,11 +63,11 @@ public class PurchaseOrderLine implements Serializable {
 		this.id = id;
 	}
 
-	public Byte getActive() {
+	public Boolean getActive() {
 		return this.active;
 	}
 
-	public void setActive(Byte active) {
+	public void setActive(Boolean active) {
 		this.active = active;
 	}
 
@@ -79,11 +79,11 @@ public class PurchaseOrderLine implements Serializable {
 		this.date = date;
 	}
 
-	public Byte getInvoiced() {
+	public Boolean getInvoiced() {
 		return this.invoiced;
 	}
 
-	public void setInvoiced(Byte invoiced) {
+	public void setInvoiced(Boolean invoiced) {
 		this.invoiced = invoiced;
 	}
 

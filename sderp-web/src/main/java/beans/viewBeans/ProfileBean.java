@@ -33,6 +33,7 @@ public class ProfileBean {
 	private Dempartement[] departements;
 	private User selectedUser;
 	private Integer selectedUserID;
+	private Boolean falilly = false;
 
 	public ProfileBean() {
 		super();
@@ -44,14 +45,12 @@ public class ProfileBean {
 		this.userTypes = UserType.values();
 		this.jobTitles = JobTitle.values();
 		this.departements = Dempartement.values();
-		
+
 		this.selectedUser = new User();
 		this.selectedUser.setEmployee(new Employee());
 		this.listUser = new ArrayList<>();
 		this.selectedUserID = 0;
-		
-		
-		
+
 		if (this.globalbean.getSelectedUserID() != 0) {
 			this.selectedUserID = this.globalbean.getSelectedUserID();
 			this.selectedUser = userLocal.find(selectedUserID);
@@ -63,6 +62,7 @@ public class ProfileBean {
 	public String doAddOrUpdate() {
 		if (this.selectedUserID == 0) {
 			System.out.println("Ajout");
+
 			this.selectedUser = userLocal.create(this.selectedUser);
 		} else if (this.selectedUserID != 0) {
 			System.out.println("Update");
@@ -137,9 +137,13 @@ public class ProfileBean {
 	public void setDepartements(Dempartement[] departements) {
 		this.departements = departements;
 	}
-	
-	
 
-	
-	
+	public Boolean getFalilly() {
+		return falilly;
+	}
+
+	public void setFalilly(Boolean falilly) {
+		this.falilly = falilly;
+	}
+
 }

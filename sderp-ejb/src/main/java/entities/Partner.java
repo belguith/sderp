@@ -19,7 +19,7 @@ public class Partner implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 
-	private Byte active;
+	private Boolean active;
 
 	private String city;
 
@@ -31,14 +31,14 @@ public class Partner implements Serializable {
 
 	private Double credit;
 
-	private Byte customer;
+	private Boolean customer;
 
 	private Double debit;
 
 	private String email;
 
 	private String fax;
-
+	
 	@Lob
 	private String image;
 
@@ -47,7 +47,7 @@ public class Partner implements Serializable {
 	private String imageMedium;
 
 	@Column(name="is_company")
-	private Byte isCompany;
+	private Boolean isCompany;
 
 	private String mobile;
 
@@ -63,7 +63,7 @@ public class Partner implements Serializable {
 
 	private String street;
 
-	private Byte supplier;
+	private Boolean supplier;
 
 	private String website;
 
@@ -122,11 +122,11 @@ public class Partner implements Serializable {
 		this.id = id;
 	}
 
-	public Byte getActive() {
+	public Boolean getActive() {
 		return this.active;
 	}
 
-	public void setActive(Byte active) {
+	public void setActive(Boolean active) {
 		this.active = active;
 	}
 
@@ -162,11 +162,11 @@ public class Partner implements Serializable {
 		this.credit = credit;
 	}
 
-	public Byte getCustomer() {
+	public Boolean getCustomer() {
 		return this.customer;
 	}
 
-	public void setCustomer(Byte customer) {
+	public void setCustomer(Boolean customer) {
 		this.customer = customer;
 	}
 
@@ -210,11 +210,11 @@ public class Partner implements Serializable {
 		this.imageMedium = imageMedium;
 	}
 
-	public Byte getIsCompany() {
+	public Boolean getIsCompany() {
 		return this.isCompany;
 	}
 
-	public void setIsCompany(Byte isCompany) {
+	public void setIsCompany(Boolean isCompany) {
 		this.isCompany = isCompany;
 	}
 
@@ -266,11 +266,11 @@ public class Partner implements Serializable {
 		this.street = street;
 	}
 
-	public Byte getSupplier() {
+	public Boolean getSupplier() {
 		return this.supplier;
 	}
 
-	public void setSupplier(Byte supplier) {
+	public void setSupplier(Boolean supplier) {
 		this.supplier = supplier;
 	}
 

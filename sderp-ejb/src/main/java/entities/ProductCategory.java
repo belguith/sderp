@@ -19,7 +19,7 @@ public class ProductCategory implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 
-	private Byte active;
+	private Boolean active;
 
 	private String name;
 
@@ -38,11 +38,11 @@ public class ProductCategory implements Serializable {
 		this.id = id;
 	}
 
-	public Byte getActive() {
+	public Boolean getActive() {
 		return this.active;
 	}
 
-	public void setActive(Byte active) {
+	public void setActive(Boolean active) {
 		this.active = active;
 	}
 

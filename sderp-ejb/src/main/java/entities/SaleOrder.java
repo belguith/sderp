@@ -20,7 +20,7 @@ public class SaleOrder implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 
-	private Byte active;
+	private Boolean active;
 
 	@Column(name="amount_tax")
 	private Double amountTax;
@@ -35,7 +35,7 @@ public class SaleOrder implements Serializable {
 	private Date date;
 
 	@Column(name="delivery_created")
-	private Byte deliveryCreated;
+	private Boolean deliveryCreated;
 
 	private Integer discount;
 
@@ -47,9 +47,9 @@ public class SaleOrder implements Serializable {
 	@Lob
 	private String notes;
 
-	private Byte paid;
+	private Boolean paid;
 
-	private Byte shipped;
+	private Boolean shipped;
 
 	private String state;
 
@@ -82,11 +82,11 @@ public class SaleOrder implements Serializable {
 		this.id = id;
 	}
 
-	public Byte getActive() {
+	public Boolean getActive() {
 		return this.active;
 	}
 
-	public void setActive(Byte active) {
+	public void setActive(Boolean active) {
 		this.active = active;
 	}
 
@@ -122,11 +122,11 @@ public class SaleOrder implements Serializable {
 		this.date = date;
 	}
 
-	public Byte getDeliveryCreated() {
+	public Boolean getDeliveryCreated() {
 		return this.deliveryCreated;
 	}
 
-	public void setDeliveryCreated(Byte deliveryCreated) {
+	public void setDeliveryCreated(Boolean deliveryCreated) {
 		this.deliveryCreated = deliveryCreated;
 	}
 
@@ -162,19 +162,19 @@ public class SaleOrder implements Serializable {
 		this.notes = notes;
 	}
 
-	public Byte getPaid() {
+	public Boolean getPaid() {
 		return this.paid;
 	}
 
-	public void setPaid(Byte paid) {
+	public void setPaid(Boolean paid) {
 		this.paid = paid;
 	}
 
-	public Byte getShipped() {
+	public Boolean getShipped() {
 		return this.shipped;
 	}
 
-	public void setShipped(Byte shipped) {
+	public void setShipped(Boolean shipped) {
 		this.shipped = shipped;
 	}
 

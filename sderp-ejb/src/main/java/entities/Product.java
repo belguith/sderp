@@ -18,7 +18,7 @@ public class Product implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 
-	private Byte active;
+	private Boolean active;
 
 	@Column(name="default_code")
 	private String defaultCode;
@@ -37,13 +37,13 @@ public class Product implements Serializable {
 	private String name;
 
 	@Column(name="purchase_ok")
-	private Byte purchaseOk;
+	private Boolean purchaseOk;
 
 	@Column(name="purchase_price")
 	private Double purchasePrice;
 
 	@Column(name="sale_ok")
-	private Byte saleOk;
+	private Boolean saleOk;
 
 	@Column(name="sale_price")
 	private Double salePrice;
@@ -97,11 +97,11 @@ public class Product implements Serializable {
 		this.id = id;
 	}
 
-	public Byte getActive() {
+	public Boolean getActive() {
 		return this.active;
 	}
 
-	public void setActive(Byte active) {
+	public void setActive(Boolean active) {
 		this.active = active;
 	}
 
@@ -153,11 +153,11 @@ public class Product implements Serializable {
 		this.name = name;
 	}
 
-	public Byte getPurchaseOk() {
+	public Boolean getPurchaseOk() {
 		return this.purchaseOk;
 	}
 
-	public void setPurchaseOk(Byte purchaseOk) {
+	public void setPurchaseOk(Boolean purchaseOk) {
 		this.purchaseOk = purchaseOk;
 	}
 
@@ -169,11 +169,11 @@ public class Product implements Serializable {
 		this.purchasePrice = purchasePrice;
 	}
 
-	public Byte getSaleOk() {
+	public Boolean getSaleOk() {
 		return this.saleOk;
 	}
 
-	public void setSaleOk(Byte saleOk) {
+	public void setSaleOk(Boolean saleOk) {
 		this.saleOk = saleOk;
 	}
 

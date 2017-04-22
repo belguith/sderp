@@ -35,7 +35,7 @@ public class Employee implements Serializable {
 	@Column(name = "element_variable")
 	private String elementVariable;
 
-	private Byte family;
+	private Boolean family;
 
 	@Column(name = "first_name")
 	private String firstName;
@@ -121,11 +121,11 @@ public class Employee implements Serializable {
 		this.elementVariable = elementVariable;
 	}
 
-	public Byte getFamily() {
+	public Boolean getFamily() {
 		return this.family;
 	}
 
-	public void setFamily(Byte family) {
+	public void setFamily(Boolean family) {
 		this.family = family;
 	}
 
